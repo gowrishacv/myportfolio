@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, Linkedin, MapPin, ArrowUpRight, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {
@@ -23,7 +23,7 @@ const Contact = () => {
           </p>
 
           {/* Contact Cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
             <motion.a
               href="mailto:gowrish@outlook.com"
               initial={{ opacity: 0, y: 20 }}
@@ -83,6 +83,22 @@ const Contact = () => {
               <p className="text-sm text-muted-foreground mb-1">Location</p>
               <p className="font-medium text-sm">Greater Düsseldorf</p>
             </motion.div>
+
+            <motion.a
+              href="/resume.pdf"
+              download
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300"
+            >
+              <FileDown className="w-6 h-6 text-primary mb-3 mx-auto" />
+              <p className="text-sm text-muted-foreground mb-1">Resume PDF</p>
+              <p className="font-medium text-sm group-hover:text-primary transition-colors">
+                Download
+              </p>
+            </motion.a>
           </div>
 
           {/* CTA Button */}

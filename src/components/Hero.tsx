@@ -88,6 +88,11 @@ const Hero = () => {
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
+              <a href="/resume.pdf" download>
+                Resume PDF
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
               <a href="https://www.linkedin.com/in/gowrishacv" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn
