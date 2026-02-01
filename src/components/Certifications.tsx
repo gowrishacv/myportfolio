@@ -3,13 +3,6 @@ import { Award, Globe } from "lucide-react";
 
 const certifications = [
   {
-    name: "Google Associate Cloud Engineer",
-    issuer: "Google",
-    description:
-      "Multi-cloud fundamentals with practical cloud operations and deployment experience.",
-    icon: "🌐",
-  },
-  {
     name: "Microsoft Certified: Azure Solutions Architect Expert",
     issuer: "Microsoft",
     description:
@@ -17,11 +10,18 @@ const certifications = [
     icon: "☁️",
   },
   {
+    name: "Google Associate Cloud Engineer",
+    issuer: "Google",
+    description:
+      "Multi-cloud fundamentals with practical cloud operations and deployment experience.",
+    icon: "☁️",
+  },
+  {
     name: "HashiCorp Certified: Terraform Associate (003)",
     issuer: "HashiCorp",
     description:
       "Infrastructure as Code for repeatable, auditable, enterprise Azure platforms.",
-    icon: "🏆",
+    icon: "🛠️",
   },
 ];
 

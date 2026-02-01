@@ -106,9 +106,10 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            14+ years in IT, 9+ years in cloud. I design secure, scalable,
-            cost-smart Azure platforms for regulated environments where
-            governance and auditability are non-negotiable.
+            I’m a Cloud Solutions Architect specializing in Microsoft Azure,
+            with 14+ years in IT and 9+ years in cloud. I design secure,
+            scalable, and cost-efficient Azure platforms for regulated
+            environments where governance and auditability are non-negotiable.
           </motion.p>
 
           {/* Contact Buttons */}
