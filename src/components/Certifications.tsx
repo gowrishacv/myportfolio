@@ -3,21 +3,35 @@ import { Award, Globe } from "lucide-react";
 
 const certifications = [
   {
+    name: "Microsoft Certified: Azure Solutions Architect Expert",
+    issuer: "Microsoft",
+    description:
+      "Enterprise-level Azure architecture certification validating expertise in designing secure, scalable, and governed cloud platforms. Strong alignment with Azure Landing Zone design, governance, networking, and security architecture.",
+    icon: "☁️",
+  },
+  {
     name: "HashiCorp Certified: Terraform Associate (003)",
     issuer: "HashiCorp",
+    description:
+      "Validates hands-on expertise in Infrastructure as Code using Terraform. Focused on building repeatable, auditable, and enterprise-ready Azure Landing Zones and platform foundations.",
     icon: "🏆",
+  },
+  {
+    name: "Google Associate Cloud Engineer",
+    issuer: "Google",
+    description:
+      "Demonstrates multi-cloud fundamentals and operational understanding of cloud platforms. Complements Azure specialization with cross-cloud architectural awareness.",
+    icon: "🌐",
   },
 ];
 
-const languages = [
-  { name: "English", level: "Professional Working" },
-];
+const languages = [{ name: "English", level: "Professional Working" }];
 
 const Certifications = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-hero" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Certifications */}
@@ -50,7 +64,14 @@ const Certifications = () => {
                       <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
                         {cert.name}
                       </h3>
-                      <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {cert.issuer}
+                      </p>
+                      {cert.description && (
+                        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                          {cert.description}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </motion.div>
