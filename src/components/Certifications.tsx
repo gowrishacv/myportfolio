@@ -3,25 +3,25 @@ import { Award, Globe } from "lucide-react";
 
 const certifications = [
   {
+    name: "Google Associate Cloud Engineer",
+    issuer: "Google",
+    description:
+      "Multi-cloud fundamentals with practical cloud operations and deployment experience.",
+    icon: "🌐",
+  },
+  {
     name: "Microsoft Certified: Azure Solutions Architect Expert",
     issuer: "Microsoft",
     description:
-      "Enterprise-level Azure architecture certification validating expertise in designing secure, scalable, and governed cloud platforms. Strong alignment with Azure Landing Zone design, governance, networking, and security architecture.",
+      "Enterprise-scale Azure architecture. Secure, governed, and scalable platform design.",
     icon: "☁️",
   },
   {
     name: "HashiCorp Certified: Terraform Associate (003)",
     issuer: "HashiCorp",
     description:
-      "Validates hands-on expertise in Infrastructure as Code using Terraform. Focused on building repeatable, auditable, and enterprise-ready Azure Landing Zones and platform foundations.",
+      "Infrastructure as Code for repeatable, auditable, enterprise Azure platforms.",
     icon: "🏆",
-  },
-  {
-    name: "Google Associate Cloud Engineer",
-    issuer: "Google",
-    description:
-      "Demonstrates multi-cloud fundamentals and operational understanding of cloud platforms. Complements Azure specialization with cross-cloud architectural awareness.",
-    icon: "🌐",
   },
 ];
 
@@ -48,7 +48,7 @@ const Certifications = () => {
               <h2 className="text-2xl font-bold">Certifications</h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {certifications.map((cert, index) => (
                 <motion.div
                   key={cert.name}
@@ -56,23 +56,25 @@ const Certifications = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   viewport={{ once: true }}
-                  className="p-5 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group"
+                  className="p-4 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group"
                 >
-                  <div className="flex items-start gap-4">
-                    <span className="text-3xl">{cert.icon}</span>
-                    <div>
-                      <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
-                        {cert.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {cert.issuer}
-                      </p>
-                      {cert.description && (
-                        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                          {cert.description}
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{cert.icon}</span>
+                      <div>
+                        <h3 className="font-semibold group-hover:text-primary transition-colors">
+                          {cert.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {cert.issuer}
                         </p>
-                      )}
+                      </div>
                     </div>
+                    {cert.description && (
+                      <p className="text-sm text-muted-foreground sm:max-w-xs sm:text-right">
+                        {cert.description}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               ))}
