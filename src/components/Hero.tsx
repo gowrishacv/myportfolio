@@ -5,7 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Hero = () => {
-  const [profileSrc, setProfileSrc] = useState("/profile.png");
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const withBase = (path: string) => {
+    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+    const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
+    return `${normalizedBase}${normalizedPath}`;
+  };
+
+  const [profileSrc, setProfileSrc] = useState(withBase("profile.png"));
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
@@ -37,7 +44,10 @@ const Hero = () => {
               <AvatarImage
                 src={profileSrc}
                 alt="Gowrisha C. Vishwa Kumar"
-                onError={() => setProfileSrc("/profile-placeholder.svg")}
+                className="object-cover"
+                onError={() =>
+                  setProfileSrc(withBase("profile-placeholder.svg"))
+                }
               />
               <AvatarFallback className="text-lg md:text-xl font-semibold">
                 GCVK
