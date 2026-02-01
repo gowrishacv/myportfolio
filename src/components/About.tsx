@@ -44,8 +44,8 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Cloud Solutions Architect specializing in Microsoft Azure with 14+
-            years in IT and 9+ years in cloud.
+            Architecture leadership across modernization, landing zones,
+            governance, and migration strategy.
           </p>
         </motion.div>
 
