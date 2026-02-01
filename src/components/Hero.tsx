@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Linkedin, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Hero = () => {
   return (
@@ -19,6 +20,28 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl mx-auto text-center"
         >
+          {/* Profile photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="flex justify-center mb-6"
+          >
+            <Avatar className="h-20 w-20 md:h-24 md:w-24 ring-2 ring-primary/25 ring-offset-2 ring-offset-background shadow-lg">
+              <AvatarImage
+                src="/profile.jpg"
+                alt="Gowrisha C. Vishwa Kumar"
+              />
+              <AvatarImage
+                src="/profile-placeholder.svg"
+                alt="Profile placeholder"
+              />
+              <AvatarFallback className="text-sm font-semibold">
+                GCVK
+              </AvatarFallback>
+            </Avatar>
+          </motion.div>
+
           {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
