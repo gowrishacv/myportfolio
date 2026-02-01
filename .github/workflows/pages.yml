@@ -19,24 +19,22 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+                uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+            - name: Setup Bun
+                uses: oven-sh/setup-bun@v2
+                with:
+                    bun-version: latest
 
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+            - run: bun install --frozen-lockfile
 
-            # For project pages (https://<user>.github.io/exactly-as-seen/)
-            - name: Build
-              run: bun run build:pages
+            # Project pages (https://<user>.github.io/<repo>/): build with the repo as base
+            - run: bun run build -- --base=/${{ github.event.repository.name }}/
 
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  path: dist
+                uses: actions/upload-pages-artifact@v3
+                with:
+                    path: dist
 
     deploy:
         runs-on: ubuntu-latest
@@ -46,5 +44,5 @@ jobs:
             url: ${{ steps.deployment.outputs.page_url }}
         steps:
             - name: Deploy
-              id: deployment
-              uses: actions/deploy-pages@v4
+                id: deployment
+                uses: actions/deploy-pages@v4

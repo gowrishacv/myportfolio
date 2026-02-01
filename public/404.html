@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting…</title>
 
-    <!--
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting…</title>
+
+  <!--
       GitHub Pages SPA fallback.
 
       When a user refreshes /some/client/route, GitHub Pages serves 404.html.
@@ -13,43 +14,40 @@
       restore it (see the script in index.html).
 
       This implementation supports:
-      - Project pages: https://<user>.github.io/exactly-as-seen/
-      - Custom domain (CNAME): https://infrawisdom.com/
+      - Project pages: https://<user>.github.io/<repo>/
+      - Custom domain (CNAME): keepSegments should be 0
     -->
-    <script type="text/javascript">
-      (function () {
-        const l = window.location;
-        const repo = "exactly-as-seen";
-        const keepSegments = l.pathname.startsWith(`/${repo}/`) ? 1 : 0;
+  <script type="text/javascript">
+    (function () {
+      const l = window.location;
 
-        const path = l.pathname
-          .split("/")
-          .slice(1 + keepSegments)
-          .join("/");
+      // For GitHub Pages *project* sites, the first path segment is the repo name.
+      // Example: https://<user>.github.io/<repo>/some/route
+      const isGithubIoHost = /(^|\.)github\.io$/i.test(l.hostname);
+      const keepSegments = isGithubIoHost ? 1 : 0;
 
-        const base = l.pathname
-          .split("/")
-          .slice(0, 1 + keepSegments)
-          .join("/");
+      const path = l.pathname.split("/").slice(1 + keepSegments).join("/");
+      const base = l.pathname.split("/").slice(0, 1 + keepSegments).join("/");
 
-        const search = l.search
-          ? "&" + l.search.slice(1).replace(/&/g, "~and~")
-          : "";
+      const search = l.search
+        ? "&" + l.search.slice(1).replace(/&/g, "~and~")
+        : "";
 
-        const newUrl =
-          l.protocol +
-          "//" +
-          l.host +
-          base +
-          "/?/" +
-          path.replace(/&/g, "~and~") +
-          search +
-          l.hash;
+      const newUrl =
+        l.protocol +
+        "//" +
+        l.host +
+        base +
+        "/?/" +
+        path.replace(/&/g, "~and~") +
+        search +
+        l.hash;
 
-        l.replace(newUrl);
-      })();
-    </script>
-  </head>
+      l.replace(newUrl);
+    })();
+  </script>
+</head>
 
-  <body></body>
+<body></body>
+
 </html>
