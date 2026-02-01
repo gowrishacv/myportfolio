@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+
+    <!--
+      GitHub Pages SPA fallback.
+
+      When a user refreshes /some/client/route, GitHub Pages serves 404.html.
+      This page rewrites the URL into /?/some/client/route so index.html can
+      restore it (see the script in index.html).
+
+      This implementation supports:
+      - Project pages: https://<user>.github.io/exactly-as-seen/
+      - Custom domain (CNAME): https://infrawisdom.com/
+    -->
+    <script type="text/javascript">
+      (function () {
+        const l = window.location;
+        const repo = "exactly-as-seen";
+        const keepSegments = l.pathname.startsWith(`/${repo}/`) ? 1 : 0;
+
+        const path = l.pathname
+          .split("/")
+          .slice(1 + keepSegments)
+          .join("/");
+
+        const base = l.pathname
+          .split("/")
+          .slice(0, 1 + keepSegments)
+          .join("/");
+
+        const search = l.search
+          ? "&" + l.search.slice(1).replace(/&/g, "~and~")
+          : "";
+
+        const newUrl =
+          l.protocol +
+          "//" +
+          l.host +
+          base +
+          "/?/" +
+          path.replace(/&/g, "~and~") +
+          search +
+          l.hash;
+
+        l.replace(newUrl);
+      })();
+    </script>
+  </head>
+
+  <body></body>
+</html>

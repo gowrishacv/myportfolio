@@ -64,6 +64,22 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
+### Deploy to GitHub Pages
+
+This repo includes a GitHub Actions workflow at `.github/workflows/pages.yml` that builds and deploys the `dist/` folder to GitHub Pages.
+
+1. In GitHub: **Settings → Pages**
+2. Set **Source** to **GitHub Actions**
+3. Push to `main` (or run the workflow manually via **Actions**) and it will publish.
+
+#### Base path (important)
+
+- **Project Pages** (URL like `https://<user>.github.io/exactly-as-seen/`)
+	- Uses `npm run build:pages` which runs `vite build --base=/exactly-as-seen/`
+- **Custom domain** (this repo has `public/CNAME`)
+	- Use the default `npm run build` (base is `/`)
+	- Configure the custom domain in **Settings → Pages**
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!

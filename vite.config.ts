@@ -1,12 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import path from "path";
+import { fileURLToPath, URL } from "node:url";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // For GitHub Pages: replace 'your-repo-name' with your actual repository name
-  base: mode === "production" ? "/myportfolio/" : "/",
+  // Default base is correct for custom domains and local dev.
+  // For GitHub Pages *project* pages, build with a repo base, e.g.:
+  //   vite build --base=/<repo>/
+  // (our Pages workflow passes this dynamically)
+  base: "/",
   server: {
     host: "::",
     port: 8080,
@@ -19,7 +22,7 @@ export default defineConfig(({ mode }) => ({
   ),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
 }));
