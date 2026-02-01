@@ -33,16 +33,9 @@ jobs:
               run: bun install --frozen-lockfile || bun install
 
             - name: Build
-              shell: bash
-              run: |
-                  if [[ -f public/CNAME ]] && [[ -s public/CNAME ]]; then
-                    base="/"
-                  elif [[ "${{ github.event.repository.name }}" == *.github.io ]]; then
-                    base="/"
-                  else
-                    base="/${{ github.event.repository.name }}/"
-                  fi
-                  bun run build -- --base="$base"
+              # GitHub "Project Pages" base: https://<user>.github.io/<repo>/
+              # If you later switch to a custom domain, change this to: bun run build -- --base=/
+              run: bun run build -- --base=/${{ github.event.repository.name }}/
 
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
