@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { MapPin, Mail, Phone, Linkedin, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Hero = () => {
+  const [profileSrc, setProfileSrc] = useState("/profile.png");
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Background Grid */}
@@ -30,13 +33,13 @@ const Hero = () => {
             transition={{ delay: 0.15, duration: 0.5 }}
             className="flex justify-center mb-6"
           >
-            <Avatar className="h-20 w-20 md:h-24 md:w-24 ring-2 ring-primary/25 ring-offset-2 ring-offset-background shadow-lg">
-              <AvatarImage src="/profile.jpg" alt="Gowrisha C. Vishwa Kumar" />
+            <Avatar className="h-28 w-28 md:h-36 md:w-36 ring-4 ring-primary/25 ring-offset-4 ring-offset-background shadow-xl">
               <AvatarImage
-                src="/profile-placeholder.svg"
-                alt="Profile placeholder"
+                src={profileSrc}
+                alt="Gowrisha C. Vishwa Kumar"
+                onError={() => setProfileSrc("/profile-placeholder.svg")}
               />
-              <AvatarFallback className="text-sm font-semibold">
+              <AvatarFallback className="text-lg md:text-xl font-semibold">
                 GCVK
               </AvatarFallback>
             </Avatar>
