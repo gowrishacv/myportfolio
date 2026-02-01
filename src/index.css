@@ -42,7 +42,7 @@
     --gradient-card: linear-gradient(135deg, hsl(222 47% 10%) 0%, hsl(222 47% 8%) 100%);
     --glow-primary: 0 0 60px hsl(199 89% 48% / 0.15);
     --glow-accent: 0 0 40px hsl(199 89% 48% / 0.2);
-    
+
     --sidebar-background: 222 47% 8%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 199 89% 48%;
@@ -145,5 +145,69 @@
 
   .bg-gradient-hero {
     background: var(--gradient-hero);
+  }
+
+  .hero-clouds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-cloud {
+    position: absolute;
+    opacity: 0.22;
+    filter: blur(24px);
+    background:
+      radial-gradient(60% 60% at 30% 40%, hsl(199 89% 48% / 0.35), transparent 60%),
+      radial-gradient(70% 70% at 70% 50%, hsl(217 91% 60% / 0.25), transparent 62%),
+      radial-gradient(80% 80% at 50% 60%, hsl(210 40% 98% / 0.08), transparent 70%);
+    animation: hero-cloud-drift 70s linear infinite;
+  }
+
+  .hero-cloud-1 {
+    width: 70vw;
+    height: 30vw;
+    top: 8%;
+    left: -25vw;
+    animation-duration: 75s;
+  }
+
+  .hero-cloud-2 {
+    width: 60vw;
+    height: 26vw;
+    top: 35%;
+    left: -30vw;
+    opacity: 0.18;
+    animation-duration: 90s;
+    animation-delay: -20s;
+  }
+
+  .hero-cloud-3 {
+    width: 65vw;
+    height: 28vw;
+    top: 60%;
+    left: -35vw;
+    opacity: 0.15;
+    animation-duration: 110s;
+    animation-delay: -45s;
+  }
+}
+
+@keyframes hero-cloud-drift {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(60vw) translateY(-2vh) scale(1.02);
+  }
+  100% {
+    transform: translateX(120vw) translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cloud {
+    animation: none;
   }
 }

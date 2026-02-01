@@ -19,6 +19,13 @@ const Hero = () => {
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(hsl(222_30%_15%/0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(222_30%_15%/0.3)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
 
+      {/* Moving Clouds */}
+      <div className="hero-clouds">
+        <div className="hero-cloud hero-cloud-1" />
+        <div className="hero-cloud hero-cloud-2" />
+        <div className="hero-cloud hero-cloud-3" />
+      </div>
+
       {/* Glow Effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-glow-pulse" />
       <div
