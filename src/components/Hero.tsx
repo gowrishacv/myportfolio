@@ -8,10 +8,13 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(hsl(222_30%_15%/0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(222_30%_15%/0.3)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-      
+
       {/* Glow Effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-glow-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-glow-pulse"
+        style={{ animationDelay: "1.5s" }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -28,10 +31,7 @@ const Hero = () => {
             className="flex justify-center mb-6"
           >
             <Avatar className="h-20 w-20 md:h-24 md:w-24 ring-2 ring-primary/25 ring-offset-2 ring-offset-background shadow-lg">
-              <AvatarImage
-                src="/profile.jpg"
-                alt="Gowrisha C. Vishwa Kumar"
-              />
+              <AvatarImage src="/profile.jpg" alt="Gowrisha C. Vishwa Kumar" />
               <AvatarImage
                 src="/profile-placeholder.svg"
                 alt="Profile placeholder"
@@ -50,7 +50,9 @@ const Hero = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8"
           >
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">Open to opportunities</span>
+            <span className="text-sm text-muted-foreground">
+              Open to opportunities
+            </span>
           </motion.div>
 
           {/* Name */}
@@ -60,8 +62,7 @@ const Hero = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
           >
-            Gowrisha C.{" "}
-            <span className="gradient-text">Vishwa Kumar</span>
+            Gowrisha C. <span className="gradient-text">Vishwa Kumar</span>
           </motion.h1>
 
           {/* Title */}
@@ -92,9 +93,9 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            14+ years in IT, 9+ years in cloud. I design secure, scalable, cost-smart 
-            Azure platforms for regulated environments where governance and auditability 
-            are non-negotiable.
+            14+ years in IT, 9+ years in cloud. I design secure, scalable,
+            cost-smart Azure platforms for regulated environments where
+            governance and auditability are non-negotiable.
           </motion.p>
 
           {/* Contact Buttons */}
@@ -111,7 +112,11 @@ const Hero = () => {
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="https://www.linkedin.com/in/gowrishacv" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.linkedin.com/in/gowrishacv"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn
               </a>
