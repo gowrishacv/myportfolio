@@ -2,28 +2,40 @@ import { motion } from "framer-motion";
 
 const coreStrengths = [
   {
-    title: "Azure Landing Zones",
-    detail: "Management Groups. Policy. RBAC. Guardrails",
+    title: "Azure Networking",
+    detail:
+      "Hub-spoke and secure network architectures. VNet design, Azure Firewall, Private Endpoints, DNS, hybrid connectivity.",
   },
   {
-    title: "Hub-spoke networking",
-    detail: "VNet. Azure Firewall. Private Endpoints. DNS",
+    title: "Cloud Governance & Landing Zones",
+    detail:
+      "Enterprise-scale Azure Landing Zones. Management Groups, Policy, RBAC, guardrails, subscription strategy.",
   },
   {
-    title: "Identity and security",
-    detail: "Entra ID. Defender for Cloud. Key Vault",
+    title: "Infrastructure as Code (Terraform)",
+    detail:
+      "Reusable, auditable, and automated platform deployments using Terraform. Azure-native patterns with long-term maintainability.",
+  },
+];
+
+const focusAreas = [
+  "Azure Landing Zone Architecture & Governance",
+  "Secure Azure Networking (Hub-Spoke, Private Connectivity)",
+  "Infrastructure as Code with Terraform",
+];
+
+const education = [
+  {
+    degree: "Master of Computer Applications (MCA)",
+    institution: "GITAM Deemed to be University",
+    year: "2020",
+    location: "Visakhapatnam, India",
   },
   {
-    title: "Platforms",
-    detail: "AKS. App Service. Functions. API Management",
-  },
-  {
-    title: "Automation",
-    detail: "Terraform. Bicep. Azure DevOps. GitHub Actions",
-  },
-  {
-    title: "Observability and cost",
-    detail: "Azure Monitor. Log Analytics. FinOps",
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "Tamil Nadu Open University",
+    year: "2014",
+    location: "India",
   },
 ];
 
@@ -85,8 +97,12 @@ const About = () => {
             viewport={{ once: true }}
             className="p-6 rounded-2xl border border-border bg-card/50 backdrop-blur-sm"
           >
-            <h3 className="text-xl font-semibold mb-4">Core strengths</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xl font-semibold mb-2">Core Strengths</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Enterprise Azure architecture built through real-world platform
+              design, governance, and delivery
+            </p>
+            <ul className="space-y-4">
               {coreStrengths.map((item) => (
                 <li key={item.title} className="flex flex-col">
                   <span className="font-medium text-foreground">
@@ -98,8 +114,41 @@ const About = () => {
                 </li>
               ))}
             </ul>
+            <div className="mt-6">
+              <h4 className="text-sm font-semibold text-foreground mb-2">
+                Primary Focus Areas
+              </h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                {focusAreas.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto mt-10 p-6 rounded-2xl border border-border bg-card/50 backdrop-blur-sm"
+        >
+          <h3 className="text-xl font-semibold mb-4">Education</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {education.map((item) => (
+              <div key={`${item.degree}-${item.year}`} className="space-y-1">
+                <p className="font-medium text-foreground">{item.degree}</p>
+                <p className="text-sm text-muted-foreground">
+                  {item.institution}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {item.location} · {item.year}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
