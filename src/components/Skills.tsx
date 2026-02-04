@@ -68,10 +68,10 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Core <span className="gradient-text">Strengths</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            My Core <span className="gradient-text">Strengths</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Expertise built through years of architecting enterprise-grade cloud

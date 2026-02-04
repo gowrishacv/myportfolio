@@ -13,10 +13,11 @@ const Contact = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Let's Build Something <span className="gradient-text">Amazing</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+            Let's Architect Your{" "}
+            <span className="gradient-text">Cloud Future</span>
           </h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
             Open to Azure Cloud Architect, Platform Architect, and Cloud
             Transformation roles. Let's discuss how I can help modernize your
             cloud infrastructure.
@@ -94,8 +95,7 @@ const Contact = () => {
           >
             <Button variant="hero" size="lg" asChild>
               <a href="mailto:gowrish@outlook.com">
-                <Mail className="w-4 h-4 mr-2" />
-                Start a Conversation
+                <Mail className="w-4 h-4 mr-2" /> Schedule a Consultation
                 <ArrowUpRight className="w-4 h-4 ml-2" />
               </a>
             </Button>
