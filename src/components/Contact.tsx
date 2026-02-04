@@ -14,12 +14,12 @@ const Contact = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Let's Build Something{" "}
-            <span className="gradient-text">Amazing</span>
+            Let's Build Something <span className="gradient-text">Amazing</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Open to Azure Cloud Architect, Platform Architect, and Cloud Transformation roles. 
-            Let's discuss how I can help modernize your cloud infrastructure.
+            Open to Azure Cloud Architect, Platform Architect, and Cloud
+            Transformation roles. Let's discuss how I can help modernize your
+            cloud infrastructure.
           </p>
 
           {/* Contact Cards */}
@@ -107,7 +107,8 @@ const Contact = () => {
       <div className="mt-24 pt-8 border-t border-border">
         <div className="container mx-auto px-6">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Gowrisha C. Vishwa Kumar. Built with passion for cloud architecture.
+            © {new Date().getFullYear()} Gowrisha C. Vishwa Kumar. Built with
+            passion for cloud architecture.
           </p>
         </div>
       </div>
