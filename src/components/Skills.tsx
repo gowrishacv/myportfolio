@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { 
-  Cloud, 
-  Shield, 
-  Network, 
-  Terminal, 
-  Eye, 
+import {
+  Cloud,
+  Shield,
+  Network,
+  Terminal,
+  Eye,
   Wallet,
   Server,
-  Lock
+  Lock,
 } from "lucide-react";
 
 const skills = [
@@ -51,9 +51,17 @@ const topSkills = [
 
 const Skills = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-hero" />
-      
+    <section className="py-24 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+
+      <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <motion.div
+          animate={{ x: [0, 50, 0], y: [0, 30, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[20%] left-[10%] w-[400px] h-[400px] rounded-full bg-primary/5 blur-[80px]"
+        />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -66,7 +74,8 @@ const Skills = () => {
             Core <span className="gradient-text">Strengths</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Expertise built through years of architecting enterprise-grade cloud solutions
+            Expertise built through years of architecting enterprise-grade cloud
+            solutions
           </p>
         </motion.div>
 
@@ -83,13 +92,19 @@ const Skills = () => {
             >
               <div className="flex justify-between mb-2">
                 <span className="font-medium">{skill.name}</span>
-                <span className="text-primary font-mono text-sm">{skill.level}%</span>
+                <span className="text-primary font-mono text-sm">
+                  {skill.level}%
+                </span>
               </div>
               <div className="h-2 bg-secondary rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
-                  transition={{ delay: 0.3 + index * 0.1, duration: 1, ease: "easeOut" }}
+                  transition={{
+                    delay: 0.3 + index * 0.1,
+                    duration: 1,
+                    ease: "easeOut",
+                  }}
                   viewport={{ once: true }}
                   className="h-full rounded-full"
                   style={{ background: "var(--gradient-primary)" }}
@@ -111,12 +126,14 @@ const Skills = () => {
               className="group relative"
             >
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
-              <div className="relative p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300">
+              <div className="relative p-6 rounded-xl border border-border bg-card/40 backdrop-blur-md hover:border-primary/50 transition-all duration-300 h-full">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:glow-accent transition-shadow duration-300">
                   <skill.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{skill.title}</h3>
-                <p className="text-muted-foreground text-sm">{skill.description}</p>
+                <p className="text-muted-foreground text-sm">
+                  {skill.description}
+                </p>
               </div>
             </motion.div>
           ))}

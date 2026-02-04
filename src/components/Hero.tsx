@@ -15,16 +15,23 @@ const Hero = () => {
   const [profileSrc, setProfileSrc] = useState(withBase("profile.png"));
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(hsl(222_30%_15%/0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(222_30%_15%/0.3)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-      {/* Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-glow-pulse" />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-glow-pulse"
-        style={{ animationDelay: "1.5s" }}
-      />
+      {/* Animated Background Blobs */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <motion.div
+          animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[100px]"
+        />
+        <motion.div
+          animate={{ x: [0, -100, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[100px]"
+        />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -60,9 +67,12 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8"
           >
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
             <span className="text-sm text-muted-foreground">
               Open to opportunities
             </span>
@@ -147,7 +157,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
