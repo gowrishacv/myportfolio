@@ -1,52 +1,56 @@
 import { motion } from "framer-motion";
 import {
   Cloud,
-  Shield,
   Network,
   Terminal,
-  Eye,
   Wallet,
-  Server,
-  Lock,
+  Rocket,
+  ShieldCheck,
 } from "lucide-react";
 
 const skills = [
   {
     icon: Cloud,
-    title: "Azure Landing Zones",
-    description: "Management Groups, Policy, RBAC, Guardrails",
+    title: "Enterprise Landing Zones",
+    description:
+      "Designing and deploying secure, scalable Azure foundations using Management Groups, Policy, and RBAC for robust governance.",
   },
   {
-    icon: Network,
-    title: "Hub-Spoke Networking",
-    description: "VNet, Azure Firewall, Private Endpoints, DNS",
-  },
-  {
-    icon: Lock,
-    title: "Identity & Security",
-    description: "Entra ID, Defender for Cloud, Key Vault",
-  },
-  {
-    icon: Server,
-    title: "Platforms",
-    description: "AKS, App Service, Functions, API Management",
+    icon: Rocket,
+    title: "Cloud Migration & Modernization",
+    description:
+      "Strategizing and executing workload migrations to Azure, including re-hosting, re-platforming, and application modernization.",
   },
   {
     icon: Terminal,
-    title: "Automation",
-    description: "Terraform, Bicep, Azure DevOps, GitHub Actions",
+    title: "DevOps & IaC Automation",
+    description:
+      "Building CI/CD pipelines with Azure DevOps & GitHub Actions. Championing Infrastructure as Code with Terraform and Bicep.",
   },
   {
-    icon: Eye,
-    title: "Observability & Cost",
-    description: "Azure Monitor, Log Analytics, FinOps",
+    icon: Network,
+    title: "Secure Networking",
+    description:
+      "Architecting Hub-Spoke topologies, VNet integration, Private Endpoints, and Azure Firewall for zero-trust security.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Identity & Security",
+    description:
+      "Implementing robust security controls with Entra ID, Defender for Cloud, and managing secrets with Key Vault.",
+  },
+  {
+    icon: Wallet,
+    title: "Cost Optimization & FinOps",
+    description:
+      "Implementing FinOps principles, rightsizing resources, and leveraging Azure Cost Management for significant savings.",
   },
 ];
 
 const topSkills = [
-  { name: "Azure Networking", level: 95 },
-  { name: "Cloud Governance", level: 92 },
-  { name: "Terraform (IaC)", level: 88 },
+  { name: "Azure Landing Zone Design", level: 95 },
+  { name: "Cloud Migration Strategy", level: 90 },
+  { name: "DevOps & IaC (Terraform)", level: 88 },
 ];
 
 const Skills = () => {

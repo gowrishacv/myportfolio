@@ -2,26 +2,27 @@ import { motion } from "framer-motion";
 
 const coreStrengths = [
   {
-    title: "Azure Networking",
+    title: "Enterprise Landing Zones & Governance",
     detail:
-      "Hub-spoke and secure network architectures. VNet design, Azure Firewall, Private Endpoints, DNS, hybrid connectivity.",
+      "Architecting enterprise-scale Azure foundations with a focus on security, compliance, and scalable governance using Management Groups, Azure Policy, and robust RBAC models.",
   },
   {
-    title: "Cloud Governance & Landing Zones",
+    title: "Cloud Migration & Modernization",
     detail:
-      "Enterprise-scale Azure Landing Zones. Management Groups, Policy, RBAC, guardrails, subscription strategy.",
+      "Developing comprehensive migration strategies and executing seamless transitions of on-premise workloads to Azure, including lift-and-shift, re-platforming, and application modernization.",
   },
   {
-    title: "Infrastructure as Code (Terraform)",
+    title: "DevOps, IaC & Cost Optimization",
     detail:
-      "Reusable, auditable, and automated platform deployments using Terraform. Azure-native patterns with long-term maintainability.",
+      "Championing DevOps culture through CI/CD automation with Azure DevOps and GitHub Actions. Driving efficiency and cost savings via Infrastructure as Code (Terraform) and FinOps best practices.",
   },
 ];
 
 const focusAreas = [
-  "Azure Landing Zone Architecture & Governance",
-  "Secure Azure Networking (Hub-Spoke, Private Connectivity)",
-  "Infrastructure as Code with Terraform",
+  "Azure Landing Zone Design & Governance",
+  "Cloud Migration Strategy & Execution",
+  "DevOps Automation & Cost Optimization",
+  "Infrastructure as Code (Terraform & Bicep)",
 ];
 
 const education = [
