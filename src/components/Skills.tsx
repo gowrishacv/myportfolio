@@ -36,13 +36,13 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-24 relative overflow-hidden bg-background"
+      className="py-28 md:py-32 relative overflow-hidden bg-background"
     >
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-        <section
-          id="skills"
-          className="py-28 md:py-32 relative overflow-hidden bg-background"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center mb-12"
         >
