@@ -98,7 +98,10 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
+    <section
+      id="experience"
+      className="py-28 md:py-32 relative overflow-hidden"
+    >
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

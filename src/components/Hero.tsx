@@ -147,14 +147,14 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="hidden lg:flex justify-center mt-12"
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, 4, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-muted-foreground"
+            className="inline-flex items-center gap-2 text-muted-foreground text-sm border border-border rounded-full px-4 py-2 bg-background/70"
           >
-            <span className="text-sm">Scroll to explore</span>
+            <span>Scroll to explore</span>
             <ArrowDown className="w-4 h-4" />
           </motion.div>
         </motion.div>

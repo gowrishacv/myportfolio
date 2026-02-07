@@ -94,12 +94,17 @@
 }
 
 @layer base {
+  html {
+    font-size: 17px;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    line-height: 1.7;
     font-family: 'Inter', sans-serif;
   }
 
