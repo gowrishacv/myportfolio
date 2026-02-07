@@ -112,24 +112,24 @@ const Experience = () => {
               {experiences.map((exp) => (
                 <AccordionItem key={exp.company} value={exp.company}>
                   <AccordionTrigger className="text-left">
-                    <div className="flex flex-1 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex items-center gap-3">
+                    <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex items-center gap-3 min-w-0">
                         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                           <Building2 className="w-5 h-5 text-primary" />
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <p className="font-semibold text-foreground">
                             {exp.role}
                           </p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-muted-foreground break-words">
                             {exp.company}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
+                      <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1 flex-wrap">
                           <Calendar className="w-4 h-4" />
-                          <span>{exp.period}</span>
+                          <span className="break-words">{exp.period}</span>
                         </div>
                         {exp.current && (
                           <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">

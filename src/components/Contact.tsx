@@ -31,7 +31,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300"
+              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
             >
               <Mail className="w-6 h-6 text-primary mb-3 mx-auto" />
               <p className="text-sm text-muted-foreground mb-1">Email</p>
@@ -46,7 +46,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
               viewport={{ once: true }}
-              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300"
+              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
             >
               <Phone className="w-6 h-6 text-primary mb-3 mx-auto" />
               <p className="text-sm text-muted-foreground mb-1">Phone</p>
@@ -63,7 +63,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
               viewport={{ once: true }}
-              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300"
+              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
             >
               <Linkedin className="w-6 h-6 text-primary mb-3 mx-auto" />
               <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
