@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { MapPin, Mail, Phone, Linkedin, ArrowDown } from "lucide-react";
+import { MapPin, ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -95,7 +95,7 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-xl md:text-2xl text-muted-foreground font-medium mb-6 leading-tight"
           >
-            Cloud Solutions Architect | Azure & Enterprise Cloud Transformation
+            Cloud Solutions Architect · Cloud Security
           </motion.p>
 
           {/* Location */}
@@ -116,9 +116,8 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed px-4"
           >
-            Driving secure, scalable, and compliant Azure cloud solutions for
-            enterprise and regulated environments. Specializing in Landing
-            Zones, Networking, and IaC with a focus on business impact.
+            Designing secure, compliant, enterprise-scale Azure platforms that
+            accelerate business outcomes.
           </motion.p>
 
           {/* Contact Buttons */}
@@ -129,26 +128,16 @@ const Hero = () => {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             <Button variant="hero" size="lg" asChild>
-              <a href="mailto:gowrish@outlook.com">
-                <Mail className="w-4 h-4 mr-2" />
-                Let's Connect
-              </a>
+              <a href="#projects">View Projects</a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a
-                href="https://www.linkedin.com/in/gowrishacv"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin className="w-4 h-4 mr-2" />
-                Connect on LinkedIn
+              <a href="#" aria-label="Download resume (coming soon)">
+                <Download className="w-4 h-4 mr-2" />
+                Download Resume
               </a>
             </Button>
             <Button variant="ghost" size="lg" asChild>
-              <a href="tel:+491629760840">
-                <Phone className="w-4 h-4 mr-2" />
-                Call Me
-              </a>
+              <a href="#contact">Contact</a>
             </Button>
           </motion.div>
         </motion.div>

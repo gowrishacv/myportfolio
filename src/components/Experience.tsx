@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Building2, Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -10,6 +10,7 @@ import {
 const experiences = [
   {
     company: "Santander Deutschland",
+    logo: "santander.png",
     role: "Cloud Architect",
     period: "September 2023 - Present",
     duration: "2 years 5 months",
@@ -23,6 +24,7 @@ const experiences = [
   },
   {
     company: "Sopra Steria",
+    logo: "sopra-steria.png",
     role: "Azure Cloud Architect",
     period: "August 2022 - May 2023",
     duration: "10 months",
@@ -37,6 +39,7 @@ const experiences = [
   },
   {
     company: "Tech Mahindra",
+    logo: "tech-mahindra.png",
     role: "Associate Technical Lead",
     period: "October 2021 - July 2022",
     duration: "10 months",
@@ -50,6 +53,7 @@ const experiences = [
   },
   {
     company: "BrainScale Inc",
+    logo: "brainscale.png",
     role: "Cloud Consultant",
     period: "October 2017 - October 2021",
     duration: "4 years 1 month",
@@ -63,6 +67,7 @@ const experiences = [
   },
   {
     company: "NetApp",
+    logo: "netapp.png",
     role: "Cloud Engineer",
     period: "October 2015 - September 2017",
     duration: "2 years",
@@ -76,9 +81,24 @@ const experiences = [
   },
 ];
 
+const getCompanyInitials = (name: string) => {
+  const parts = name.split(" ").filter(Boolean);
+  if (parts.length === 1) {
+    return parts[0].slice(0, 2).toUpperCase();
+  }
+  return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+};
+
 const Experience = () => {
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const withBase = (path: string) => {
+    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+    const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
+    return `${normalizedBase}${normalizedPath}`;
+  };
+
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="experience" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -114,8 +134,19 @@ const Experience = () => {
                   <AccordionTrigger className="text-left">
                     <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                          <Building2 className="w-5 h-5 text-primary" />
+                        <div className="w-10 h-10 rounded-lg bg-white border border-border flex items-center justify-center shrink-0 overflow-hidden">
+                          {exp.logo ? (
+                            <img
+                              src={withBase(exp.logo)}
+                              alt={`${exp.company} logo`}
+                              className="h-7 w-7 object-contain"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span className="text-xs font-semibold text-primary">
+                              {getCompanyInitials(exp.company)}
+                            </span>
+                          )}
                         </div>
                         <div className="min-w-0">
                           <p className="font-semibold text-foreground">
