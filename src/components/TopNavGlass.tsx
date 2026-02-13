@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Cloud } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -36,6 +35,13 @@ const scrollToSection = (id: string) => {
 
 const TopNavGlass = () => {
   const { t } = useTranslation();
+
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const withBase = (path: string) => {
+    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+    const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
+    return `${normalizedBase}${normalizedPath}`;
+  };
 
   const items = useMemo<NavItem[]>(
     () => [
@@ -154,6 +160,7 @@ const TopNavGlass = () => {
             }}
             aria-label={t("nav.logoAria")}
             className={cn(
+              "group",
               "grid place-items-center",
               "h-10 w-10 rounded-xl",
               "text-foreground/90 hover:text-foreground",
@@ -161,7 +168,18 @@ const TopNavGlass = () => {
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
             )}
           >
-            <Cloud className="h-5 w-5" />
+            <img
+              src={withBase("cloud_logo.png")}
+              alt=""
+              aria-hidden="true"
+              className={cn(
+                "h-5 w-5 object-contain",
+                "opacity-90 group-hover:opacity-100",
+                "transition-opacity",
+                "dark:invert",
+              )}
+              draggable={false}
+            />
           </button>
 
           <div
