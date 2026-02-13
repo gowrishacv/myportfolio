@@ -38,8 +38,6 @@ The objective was to create a secure Azure foundation that allows new workloads 
 
 ---
 
-
-
 ## Business Challenge
 The organization faced:
 
@@ -160,3 +158,9 @@ Workload teams request subscriptions through a controlled process. The platform 
 
 ## Tech Stack
 Azure, Management Groups, Subscriptions, Entra ID, RBAC, PIM, Azure Policy, Key Vault, Log Analytics, Azure Monitor, Defender for Cloud, vWAN, ExpressRoute, VNets, Hub-Spoke, NSG, Private DNS, Private Endpoints, Azure Firewall, Terraform, Bicep, Azure DevOps, GitHub Actions
+
+Updated todo list
+ Protect main branch in GitHub
+ Require PR from pre to main
+ Block direct pushes to main
+ Add required checks/approvals
