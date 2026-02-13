@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import SkillIconsStrip from "@/components/SkillIconsStrip";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
+import SkillIconsStrip from "@/components/SkillIconsStrip";
 
 const PROJECT_TOOL_ICONS = "azure,terraform,githubactions,git,bash,powershell";
 
@@ -14,8 +16,8 @@ const projectLinks: Record<
 > = {
   landingZone: {
     github: "https://github.com/gowrishacv",
-    caseStudy: "#",
-    diagram: "#",
+    caseStudy: "/azure-landing-zone-case-study",
+    diagram: "/azure-landing-zone-case-study#architecture-diagram",
   },
   migration: {
     github: "https://github.com/gowrishacv",
@@ -115,14 +117,36 @@ const Projects = () => {
                   >
                     <Github className="h-4 w-4" /> {t("projects.links.github")}
                   </a>
-                  <span className="text-muted-foreground inline-flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4" />{" "}
-                    {t("projects.links.caseStudy")}
-                  </span>
-                  <span className="text-muted-foreground inline-flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4" />{" "}
-                    {t("projects.links.diagram")}
-                  </span>
+
+                  {links.caseStudy !== "#" ? (
+                    <Link
+                      to={links.caseStudy}
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      {t("projects.links.caseStudy")}
+                    </Link>
+                  ) : (
+                    <span className="text-muted-foreground inline-flex items-center gap-2">
+                      <ExternalLink className="h-4 w-4" />
+                      {t("projects.links.caseStudy")}
+                    </span>
+                  )}
+
+                  {links.diagram !== "#" ? (
+                    <Link
+                      to={links.diagram}
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      {t("projects.links.diagram")}
+                    </Link>
+                  ) : (
+                    <span className="text-muted-foreground inline-flex items-center gap-2">
+                      <ExternalLink className="h-4 w-4" />
+                      {t("projects.links.diagram")}
+                    </span>
+                  )}
                 </div>
               </motion.div>
             );
