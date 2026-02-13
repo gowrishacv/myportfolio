@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Cloud } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -144,64 +145,84 @@ const TopNavGlass = () => {
           "px-2 py-2",
         )}
       >
-        <div
-          ref={listRef}
-          className="relative flex items-center gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {highlight ? (
-            <motion.div
-              aria-hidden="true"
-              className={cn(
-                "pointer-events-none absolute left-0 top-0",
-                "rounded-xl",
-                "bg-background/90 dark:bg-background/60",
-                "border border-border/60",
-                "shadow-sm",
-              )}
-              initial={false}
-              animate={{
-                x: highlight.x,
-                y: highlight.y,
-                width: highlight.width,
-                height: highlight.height,
-              }}
-              transition={{ type: "spring", stiffness: 520, damping: 38 }}
-            />
-          ) : null}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              setActiveId("home");
+              scrollToSection("home");
+            }}
+            aria-label={t("nav.logoAria")}
+            className={cn(
+              "grid place-items-center",
+              "h-10 w-10 rounded-xl",
+              "text-foreground/90 hover:text-foreground",
+              "transition-colors",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+            )}
+          >
+            <Cloud className="h-5 w-5" />
+          </button>
 
-          {items.map((item, idx) => {
-            const isActive = activeId === item.id;
-            const showSeparator = idx !== 0;
+          <div
+            ref={listRef}
+            className="relative flex items-center gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {highlight ? (
+              <motion.div
+                aria-hidden="true"
+                className={cn(
+                  "pointer-events-none absolute left-0 top-0",
+                  "rounded-xl",
+                  "bg-background/90 dark:bg-background/60",
+                  "border border-border/60",
+                  "shadow-sm",
+                )}
+                initial={false}
+                animate={{
+                  x: highlight.x,
+                  y: highlight.y,
+                  width: highlight.width,
+                  height: highlight.height,
+                }}
+                transition={{ type: "spring", stiffness: 520, damping: 38 }}
+              />
+            ) : null}
 
-            return (
-              <div key={item.id} className="flex items-center">
-                {showSeparator ? (
-                  <span
-                    aria-hidden="true"
-                    className="mx-1 h-5 w-px bg-border/60"
-                  />
-                ) : null}
+            {items.map((item, idx) => {
+              const isActive = activeId === item.id;
+              const showSeparator = idx !== 0;
 
-                <button
-                  type="button"
-                  ref={setButtonRef(item.id)}
-                  onClick={() => {
-                    setActiveId(item.id);
-                    scrollToSection(item.id);
-                  }}
-                  className={cn(
-                    "relative z-10 select-none rounded-xl px-5 py-2 text-sm font-medium transition-colors",
-                    "text-muted-foreground hover:text-foreground",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-                    isActive && "text-foreground",
-                  )}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {item.label}
-                </button>
-              </div>
-            );
-          })}
+              return (
+                <div key={item.id} className="flex items-center">
+                  {showSeparator ? (
+                    <span
+                      aria-hidden="true"
+                      className="mx-1 h-5 w-px bg-border/60"
+                    />
+                  ) : null}
+
+                  <button
+                    type="button"
+                    ref={setButtonRef(item.id)}
+                    onClick={() => {
+                      setActiveId(item.id);
+                      scrollToSection(item.id);
+                    }}
+                    className={cn(
+                      "relative z-10 select-none rounded-xl px-5 py-2 text-sm font-medium transition-colors",
+                      "text-muted-foreground hover:text-foreground",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+                      isActive && "text-foreground",
+                    )}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </nav>

@@ -1,6 +1,7 @@
 const en = {
   nav: {
     aria: "Primary",
+    logoAria: "Go to top",
     home: "Home",
     about: "About",
     projects: "Projects",

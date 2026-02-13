@@ -1,6 +1,7 @@
 const de = {
   nav: {
     aria: "Primär",
+    logoAria: "Nach oben",
     home: "Home",
     about: "Über mich",
     projects: "Projekte",
