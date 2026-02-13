@@ -1,4 +1,11 @@
 const de = {
+  nav: {
+    aria: "Primär",
+    home: "Home",
+    about: "Über mich",
+    projects: "Projekte",
+    contact: "Kontakt",
+  },
   common: {
     language: "Sprache",
     en: "EN",

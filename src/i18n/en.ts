@@ -1,4 +1,11 @@
 const en = {
+  nav: {
+    aria: "Primary",
+    home: "Home",
+    about: "About",
+    projects: "Projects",
+    contact: "Contact",
+  },
   common: {
     language: "Language",
     en: "EN",
