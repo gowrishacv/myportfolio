@@ -9,14 +9,11 @@ Multi-region. Hybrid on-prem. Multi-subscription enterprise scale.
 
 Updated todo list
  Protect main branch in GitHub
- Require PR from pre to main
- Block direct pushes to main
- Add required checks/approvals
-
 ---
 
 ## Table of Contents
 - [Azure Landing Zone Architecture](#azure-landing-zone-architecture)
+  - [Protect main branch in GitHub](#protect-main-branch-in-github)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Business Challenge](#business-challenge)
