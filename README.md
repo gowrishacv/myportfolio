@@ -80,6 +80,18 @@ This repo includes a GitHub Actions workflow at `.github/workflows/pages.yml` th
 	- Use the default `npm run build` (base is `/`)
 	- Configure the custom domain in **Settings → Pages**
 
+### Pre-production vs Production (safer workflow)
+
+This repo uses two branches for safety:
+
+- **Production**: `main`
+	- Automatically deploys to GitHub Pages via `.github/workflows/pages.yml`
+- **Pre-production**: `pre`
+	- Runs build + lint + tests and uploads a downloadable `dist/` artifact via `.github/workflows/pre.yml`
+	- **Does not deploy**, so it cannot break your live site
+
+Tip (recommended): In GitHub, protect the `main` branch (Settings → Branches) so only PRs can merge into `main`.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
