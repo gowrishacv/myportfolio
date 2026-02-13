@@ -1,5 +1,16 @@
 import { motion } from "framer-motion";
 
+const SKILLICONS_SKILLS =
+  "js,azure,gcp,aws,bash,terraform,powershell,vscode,windows,redhat,apple,git,nginx,kubernetes,docker,c,vim";
+
+const buildSkilliconsUrl = (options: {
+  theme: "dark" | "light";
+  perline: number;
+}) => {
+  const { theme, perline } = options;
+  return `https://skillicons.dev/icons?i=${SKILLICONS_SKILLS}&perline=${perline}&theme=${theme}`;
+};
+
 const skillGroups = [
   {
     title: "Cloud",
@@ -33,6 +44,23 @@ const skillGroups = [
 ];
 
 const Skills = () => {
+  const skilliconsUrlLightMobile = buildSkilliconsUrl({
+    theme: "light",
+    perline: 6,
+  });
+  const skilliconsUrlDarkMobile = buildSkilliconsUrl({
+    theme: "dark",
+    perline: 6,
+  });
+  const skilliconsUrlLightDesktop = buildSkilliconsUrl({
+    theme: "light",
+    perline: 10,
+  });
+  const skilliconsUrlDarkDesktop = buildSkilliconsUrl({
+    theme: "dark",
+    perline: 10,
+  });
+
   return (
     <section
       id="skills"
@@ -80,6 +108,60 @@ const Skills = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto mt-12"
+        >
+          <div className="rounded-2xl border border-border bg-card/70 p-6 text-center">
+            <p className="text-sm font-medium mb-3">Tools I use day-to-day</p>
+            <a
+              href="https://skillicons.dev"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Open skillicons.dev (external)"
+              className="inline-flex justify-center"
+            >
+              {/* Mobile layout */}
+              <img
+                src={skilliconsUrlLightMobile}
+                alt="Skill icons"
+                loading="lazy"
+                decoding="async"
+                className="dark:hidden sm:hidden max-w-full h-auto"
+              />
+              <img
+                src={skilliconsUrlDarkMobile}
+                alt="Skill icons"
+                loading="lazy"
+                decoding="async"
+                className="hidden dark:block sm:hidden max-w-full h-auto"
+              />
+
+              {/* Desktop layout */}
+              <img
+                src={skilliconsUrlLightDesktop}
+                alt="Skill icons"
+                loading="lazy"
+                decoding="async"
+                className="hidden sm:block dark:hidden max-w-full h-auto"
+              />
+              <img
+                src={skilliconsUrlDarkDesktop}
+                alt="Skill icons"
+                loading="lazy"
+                decoding="async"
+                className="hidden dark:sm:block max-w-full h-auto"
+              />
+            </a>
+            <p className="text-xs text-muted-foreground mt-3">
+              Icons powered by skillicons.dev
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

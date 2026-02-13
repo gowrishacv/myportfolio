@@ -1,0 +1,36 @@
+Project : todotasks-project
+Name : tasks
+Version : 0.1.0-SNAPSHOT
+Description : A simple task management application built with Spring Boot and React.
+URL :
+License : MIT
+Organization : Todotasks Inc.
+Developers :
+    - name : Gowrisha CV
+        email : gowrish@outlook.com
+        @github : gowrishacv
+        @linkedin : gowrishacv
+
+        Task:
+            ☐ Design the database schema for tasks and users.
+            ☐ Implement RESTful APIs for task management (CRUD operations).
+            ☐ Create a React frontend to interact with the APIs.
+            ☐ Implement user authentication and authorization.
+            ☐ Write unit and integration tests for the backend and frontend.
+            ☐ Deploy the application to a cloud platform (e.g., Heroku, AWS).
+            ☐ Set up continuous integration and continuous deployment (CI/CD) pipelines.
+            ☐ Document the API endpoints and frontend components.
+            ☐ Gather user feedback and iterate on the application features and design.
+
+        New Task:
+            ☐ Implement a feature to categorize tasks (e.g., work, personal, urgent).
+            ☐ Add a due date and reminder functionality for tasks.
+            ☐ Integrate a calendar view to visualize tasks by their due dates.
+            ☐ Implement a search and filter functionality for tasks.
+            ☐ Add support for task attachments (e.g., files, images)
+            ☐ complete the task management application with additional features based on user feedback and requirements.
+            ☐ @Cancel the task of implementing a feature to categorize tasks (e.g., work, personal, urgent) as it is not a priority at the moment.
+            ☐ @complete
+        
+☐ @high
+
