@@ -198,6 +198,8 @@ const Projects = () => {
                 initialAnchorId={caseStudyAnchor}
                 scrollMode="container"
                 containerClassName="max-h-[70vh] overflow-auto pr-2"
+                hideFirstHeading
+                hideTableOfContents
               />
             </div>
           </DialogContent>

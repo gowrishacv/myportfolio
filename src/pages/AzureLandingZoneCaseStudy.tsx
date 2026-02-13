@@ -24,6 +24,9 @@ const AzureLandingZoneCaseStudy = () => {
               mdUrl={mdUrl}
               initialAnchorId={initialAnchorId}
               scrollMode="window"
+              renderHeader
+              hideFirstHeading
+              hideTableOfContents
             />
           </div>
         </div>
