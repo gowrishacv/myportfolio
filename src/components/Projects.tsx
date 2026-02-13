@@ -1,9 +1,16 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import SkillIconsStrip from "@/components/SkillIconsStrip";
+import CaseStudyMarkdown from "@/components/CaseStudyMarkdown";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const PROJECT_TOOL_ICONS = "azure,terraform,githubactions,git,bash,powershell";
 
@@ -16,8 +23,8 @@ const projectLinks: Record<
 > = {
   landingZone: {
     github: "https://github.com/gowrishacv",
-    caseStudy: "/azure-landing-zone-case-study",
-    diagram: "/azure-landing-zone-case-study#architecture-diagram",
+    caseStudy: "__modal__",
+    diagram: "__modal__#architecture-diagram",
   },
   migration: {
     github: "https://github.com/gowrishacv",
@@ -33,6 +40,17 @@ const projectLinks: Record<
 
 const Projects = () => {
   const { t } = useTranslation();
+
+  const [caseStudyOpen, setCaseStudyOpen] = useState(false);
+  const [caseStudyAnchor, setCaseStudyAnchor] = useState<string | undefined>(
+    undefined,
+  );
+
+  const caseStudyMdUrl = useMemo(() => {
+    const baseUrl = import.meta.env.BASE_URL || "/";
+    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+    return `${normalizedBase}azure-landing-zone-case-study/index.md`;
+  }, []);
 
   return (
     <section id="projects" className="py-20 md:py-24 relative overflow-hidden">
@@ -119,13 +137,17 @@ const Projects = () => {
                   </a>
 
                   {links.caseStudy !== "#" ? (
-                    <Link
-                      to={links.caseStudy}
+                    <button
+                      type="button"
                       className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
+                      onClick={() => {
+                        setCaseStudyAnchor(undefined);
+                        setCaseStudyOpen(true);
+                      }}
                     >
                       <ExternalLink className="h-4 w-4" />
                       {t("projects.links.caseStudy")}
-                    </Link>
+                    </button>
                   ) : (
                     <span className="text-muted-foreground inline-flex items-center gap-2">
                       <ExternalLink className="h-4 w-4" />
@@ -134,13 +156,17 @@ const Projects = () => {
                   )}
 
                   {links.diagram !== "#" ? (
-                    <Link
-                      to={links.diagram}
+                    <button
+                      type="button"
                       className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
+                      onClick={() => {
+                        setCaseStudyAnchor("architecture-diagram");
+                        setCaseStudyOpen(true);
+                      }}
                     >
                       <ExternalLink className="h-4 w-4" />
                       {t("projects.links.diagram")}
-                    </Link>
+                    </button>
                   ) : (
                     <span className="text-muted-foreground inline-flex items-center gap-2">
                       <ExternalLink className="h-4 w-4" />
@@ -152,6 +178,30 @@ const Projects = () => {
             );
           })}
         </div>
+
+        <Dialog open={caseStudyOpen} onOpenChange={setCaseStudyOpen}>
+          <DialogContent className="max-w-5xl w-[95vw] p-0 overflow-hidden">
+            <div className="border-b border-border bg-card/60 px-6 py-4">
+              <DialogHeader>
+                <DialogTitle className="text-xl md:text-2xl font-bold">
+                  Azure Landing Zone — Case Study
+                </DialogTitle>
+              </DialogHeader>
+              <p className="text-sm text-muted-foreground mt-1">
+                Use the close button (top-right) to return.
+              </p>
+            </div>
+
+            <div className="px-6 py-5">
+              <CaseStudyMarkdown
+                mdUrl={caseStudyMdUrl}
+                initialAnchorId={caseStudyAnchor}
+                scrollMode="container"
+                containerClassName="max-h-[70vh] overflow-auto pr-2"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
