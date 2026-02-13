@@ -38,6 +38,8 @@ The objective was to create a secure Azure foundation that allows new workloads 
 
 ---
 
+
+
 ## Business Challenge
 The organization faced:
 
