@@ -92,6 +92,13 @@ This repo uses two branches for safety:
 
 Tip (recommended): In GitHub, protect the `main` branch (Settings → Branches) so only PRs can merge into `main`.
 
+#### Local guardrails (optional)
+
+This repo also includes a local Git hook that blocks direct pushes to `main` and prints a friendly message ("please push to `pre` and open a PR").
+
+- It installs automatically on `npm i` via `postinstall`.
+- It only affects your local machine (GitHub branch protection rules are still the source of truth).
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
