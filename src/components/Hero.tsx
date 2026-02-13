@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { MapPin, ArrowDown, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { MapPin, ArrowDown } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useTranslation } from "react-i18next";
 
@@ -120,31 +119,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed px-4"
+            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed px-4"
           >
             {t("hero.summary")}
           </motion.p>
-
-          {/* Contact Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-wrap items-center justify-center gap-4"
-          >
-            <Button variant="hero" size="lg" asChild>
-              <a href="#projects">{t("hero.cta.viewProjects")}</a>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a href="#" aria-label={t("hero.cta.downloadResumeAria")}>
-                <Download className="w-4 h-4 mr-2" />
-                {t("hero.cta.downloadResume")}
-              </a>
-            </Button>
-            <Button variant="ghost" size="lg" asChild>
-              <a href="#contact">{t("hero.cta.contact")}</a>
-            </Button>
-          </motion.div>
         </motion.div>
 
         {/* Scroll Indicator */}
