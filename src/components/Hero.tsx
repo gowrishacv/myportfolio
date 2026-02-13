@@ -88,7 +88,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4 whitespace-nowrap"
+            className="text-4xl sm:text-5xl md:text-7xl font-semibold tracking-[-0.03em] mb-4 whitespace-nowrap"
           >
             Gowrisha C. <span className="gradient-text">Vishwa Kumar</span>
           </motion.h1>

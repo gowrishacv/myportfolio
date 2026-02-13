@@ -65,7 +65,7 @@ const Projects = () => {
           <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground mb-3">
             {t("projects.label")}
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] mb-4">
             {t("projects.heading.selected")}{" "}
             <span className="gradient-text">{t("projects.heading.work")}</span>
           </h2>

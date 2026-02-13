@@ -23,7 +23,7 @@ const About = () => {
           <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground mb-3">
             {t("about.label")}
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] mb-4">
             {t("about.heading.focusedOn")}{" "}
             <span className="gradient-text">
               {t("about.heading.secureCloud")}

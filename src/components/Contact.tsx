@@ -19,7 +19,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] mb-6 text-foreground">
             {t("contact.heading.letsBuild")}{" "}
             <span className="gradient-text">
               {t("contact.heading.nextPlatform")}
