@@ -1,15 +1,5 @@
 import { motion } from "framer-motion";
-
-const SKILLICONS_SKILLS =
-  "js,azure,gcp,aws,bash,terraform,powershell,vscode,windows,redhat,apple,git,nginx,kubernetes,docker,c,vim";
-
-const buildSkilliconsUrl = (options: {
-  theme: "dark" | "light";
-  perline: number;
-}) => {
-  const { theme, perline } = options;
-  return `https://skillicons.dev/icons?i=${SKILLICONS_SKILLS}&perline=${perline}&theme=${theme}`;
-};
+import SkillIconsStrip from "@/components/SkillIconsStrip";
 
 const skillGroups = [
   {
@@ -44,27 +34,13 @@ const skillGroups = [
 ];
 
 const Skills = () => {
-  const skilliconsUrlLightMobile = buildSkilliconsUrl({
-    theme: "light",
-    perline: 6,
-  });
-  const skilliconsUrlDarkMobile = buildSkilliconsUrl({
-    theme: "dark",
-    perline: 6,
-  });
-  const skilliconsUrlLightDesktop = buildSkilliconsUrl({
-    theme: "light",
-    perline: 10,
-  });
-  const skilliconsUrlDarkDesktop = buildSkilliconsUrl({
-    theme: "dark",
-    perline: 10,
-  });
+  const skillicons =
+    "js,azure,gcp,aws,bash,terraform,powershell,vscode,windows,redhat,apple,git,nginx,kubernetes,docker,c,vim";
 
   return (
     <section
       id="skills"
-      className="py-28 md:py-32 relative overflow-hidden bg-background"
+      className="py-20 md:py-24 relative overflow-hidden bg-background"
     >
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -72,7 +48,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-12"
+          className="max-w-4xl mx-auto text-center mb-10"
         >
           <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground mb-3">
             Skills
@@ -114,49 +90,16 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto mt-12"
+          className="max-w-5xl mx-auto mt-10"
         >
           <div className="rounded-2xl border border-border bg-card/70 p-6 text-center">
-            <p className="text-sm font-medium mb-3">Tools I use day-to-day</p>
-            <a
-              href="https://skillicons.dev"
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Open skillicons.dev (external)"
-              className="inline-flex justify-center"
-            >
-              {/* Mobile layout */}
-              <img
-                src={skilliconsUrlLightMobile}
-                alt="Skill icons"
-                loading="lazy"
-                decoding="async"
-                className="dark:hidden sm:hidden max-w-full h-auto"
-              />
-              <img
-                src={skilliconsUrlDarkMobile}
-                alt="Skill icons"
-                loading="lazy"
-                decoding="async"
-                className="hidden dark:block sm:hidden max-w-full h-auto"
-              />
-
-              {/* Desktop layout */}
-              <img
-                src={skilliconsUrlLightDesktop}
-                alt="Skill icons"
-                loading="lazy"
-                decoding="async"
-                className="hidden sm:block dark:hidden max-w-full h-auto"
-              />
-              <img
-                src={skilliconsUrlDarkDesktop}
-                alt="Skill icons"
-                loading="lazy"
-                decoding="async"
-                className="hidden dark:sm:block max-w-full h-auto"
-              />
-            </a>
+            <SkillIconsStrip
+              icons={skillicons}
+              label="Tools I use day-to-day"
+              perlineMobile={6}
+              perlineDesktop={10}
+              imageAlt="Skill and tooling icons"
+            />
             <p className="text-xs text-muted-foreground mt-3">
               Icons powered by skillicons.dev
             </p>

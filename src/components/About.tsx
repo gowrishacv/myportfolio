@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import SkillIconsStrip from "@/components/SkillIconsStrip";
+
+const ABOUT_TOOL_ICONS = "azure,terraform,git,kubernetes,docker";
 
 const focusAreas = [
   "Azure Landing Zone Design & Governance",
@@ -9,7 +12,7 @@ const focusAreas = [
 
 const About = () => {
   return (
-    <section id="about" className="py-28 md:py-32 relative overflow-hidden">
+    <section id="about" className="py-20 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,6 +42,16 @@ const About = () => {
               Europe (hybrid/remote).
             </p>
           </div>
+
+          <div className="mt-6">
+            <SkillIconsStrip
+              icons={ABOUT_TOOL_ICONS}
+              perlineMobile={6}
+              perlineDesktop={10}
+              imageAlt="About tooling icons"
+              className="opacity-95"
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -46,7 +59,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto mt-10 rounded-2xl border border-border bg-card/70 p-6"
+          className="max-w-5xl mx-auto mt-8 rounded-2xl border border-border bg-card/70 p-6"
         >
           <h4 className="text-sm font-semibold text-foreground mb-3">
             Focus Areas

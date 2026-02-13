@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, MapPin, ArrowUpRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SkillIconsStrip from "@/components/SkillIconsStrip";
+
+const CONTACT_TOOL_ICONS = "azure,terraform,kubernetes,docker,git,vscode";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-28 md:py-32 relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -17,6 +20,17 @@ const Contact = () => {
             Let’s build your{" "}
             <span className="gradient-text">next platform</span>
           </h2>
+
+          <div className="mb-10">
+            <SkillIconsStrip
+              icons={CONTACT_TOOL_ICONS}
+              perlineMobile={6}
+              perlineDesktop={12}
+              imageAlt="Tooling icons"
+              className="opacity-95"
+            />
+          </div>
+
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
             Open to Cloud Architect and DevOps-focused platform roles. Reach out
             to discuss how I can help modernize your cloud infrastructure.
@@ -106,7 +120,7 @@ const Contact = () => {
       </div>
 
       {/* Footer */}
-      <div className="mt-24 pt-8 border-t border-border">
+      <div className="mt-16 pt-8 border-t border-border">
         <div className="container mx-auto px-6">
           <p className="text-center text-sm text-muted-foreground">
             © {new Date().getFullYear()} Gowrisha C. Vishwa Kumar. Built with

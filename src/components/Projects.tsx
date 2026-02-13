@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import SkillIconsStrip from "@/components/SkillIconsStrip";
+
+const PROJECT_TOOL_ICONS = "azure,terraform,githubactions,git,bash,powershell";
 
 const projects = [
   {
@@ -54,14 +57,14 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-28 md:py-32 relative overflow-hidden">
+    <section id="projects" className="py-20 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-12"
+          className="max-w-4xl mx-auto text-center mb-10"
         >
           <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground mb-3">
             Projects
@@ -73,6 +76,16 @@ const Projects = () => {
             A focused set of projects highlighting measurable outcomes,
             governance maturity, and enterprise-grade Azure architecture.
           </p>
+
+          <div className="mt-6">
+            <SkillIconsStrip
+              icons={PROJECT_TOOL_ICONS}
+              perlineMobile={6}
+              perlineDesktop={12}
+              imageAlt="Project tooling icons"
+              className="opacity-95"
+            />
+          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">

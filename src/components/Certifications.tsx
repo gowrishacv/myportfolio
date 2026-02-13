@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { Award, GraduationCap } from "lucide-react";
+import SkillIconsStrip from "@/components/SkillIconsStrip";
+
+const CERT_TOOL_ICONS = "azure,terraform";
 
 const certifications = [
   {
@@ -29,7 +32,7 @@ const education = [
 
 const Certifications = () => {
   return (
-    <section id="education" className="py-28 md:py-32 relative overflow-hidden">
+    <section id="education" className="py-20 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,6 +41,16 @@ const Certifications = () => {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
         >
+          <div className="mb-8">
+            <SkillIconsStrip
+              icons={CERT_TOOL_ICONS}
+              perlineMobile={4}
+              perlineDesktop={8}
+              imageAlt="Certification tooling icons"
+              className="opacity-95"
+            />
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="rounded-2xl border border-border bg-card/70 p-6">
               <div className="flex items-center gap-3 mb-5">
