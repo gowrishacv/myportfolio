@@ -2,10 +2,13 @@ import { motion } from "framer-motion";
 import { Mail, Linkedin, MapPin, ArrowUpRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SkillIconsStrip from "@/components/SkillIconsStrip";
+import { useTranslation } from "react-i18next";
 
 const CONTACT_TOOL_ICONS = "azure,terraform,kubernetes,docker,git,vscode";
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="contact" className="py-20 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -17,8 +20,10 @@ const Contact = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
-            Let’s build your{" "}
-            <span className="gradient-text">next platform</span>
+            {t("contact.heading.letsBuild")}{" "}
+            <span className="gradient-text">
+              {t("contact.heading.nextPlatform")}
+            </span>
           </h2>
 
           <div className="mb-10">
@@ -26,14 +31,13 @@ const Contact = () => {
               icons={CONTACT_TOOL_ICONS}
               perlineMobile={6}
               perlineDesktop={12}
-              imageAlt="Tooling icons"
+              imageAlt={t("projects.toolIconsAlt")}
               className="opacity-95"
             />
           </div>
 
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-            Open to Cloud Architect and DevOps-focused platform roles. Reach out
-            to discuss how I can help modernize your cloud infrastructure.
+            {t("contact.intro")}
           </p>
 
           {/* Contact Cards */}
@@ -47,7 +51,9 @@ const Contact = () => {
               className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
             >
               <Mail className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">Email</p>
+              <p className="text-sm text-muted-foreground mb-1">
+                {t("contact.cards.email")}
+              </p>
               <p className="font-medium text-sm group-hover:text-primary transition-colors">
                 gowrish@outlook.com
               </p>
@@ -64,7 +70,9 @@ const Contact = () => {
               className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
             >
               <Linkedin className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
+              <p className="text-sm text-muted-foreground mb-1">
+                {t("contact.cards.linkedin")}
+              </p>
               <p className="font-medium text-sm group-hover:text-primary transition-colors flex items-center justify-center gap-1">
                 /in/gowrishacv
                 <ArrowUpRight className="w-3 h-3" />
@@ -82,7 +90,9 @@ const Contact = () => {
               className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
             >
               <Github className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">GitHub</p>
+              <p className="text-sm text-muted-foreground mb-1">
+                {t("contact.cards.github")}
+              </p>
               <p className="font-medium text-sm group-hover:text-primary transition-colors flex items-center justify-center gap-1">
                 github.com/gowrishacv
                 <ArrowUpRight className="w-3 h-3" />
@@ -97,8 +107,12 @@ const Contact = () => {
               className="p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm"
             >
               <MapPin className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">Location</p>
-              <p className="font-medium text-sm">Greater Düsseldorf</p>
+              <p className="text-sm text-muted-foreground mb-1">
+                {t("contact.cards.location")}
+              </p>
+              <p className="font-medium text-sm">
+                {t("contact.locationValue")}
+              </p>
             </motion.div>
           </div>
 
@@ -111,7 +125,7 @@ const Contact = () => {
           >
             <Button variant="hero" size="lg" asChild>
               <a href="mailto:gowrish@outlook.com">
-                <Mail className="w-4 h-4 mr-2" /> Schedule a Consultation
+                <Mail className="w-4 h-4 mr-2" /> {t("contact.cta")}
                 <ArrowUpRight className="w-4 h-4 ml-2" />
               </a>
             </Button>
@@ -123,8 +137,8 @@ const Contact = () => {
       <div className="mt-16 pt-8 border-t border-border">
         <div className="container mx-auto px-6">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Gowrisha C. Vishwa Kumar. Built with
-            passion for cloud architecture.
+            © {new Date().getFullYear()} Gowrisha C. Vishwa Kumar.{" "}
+            {t("contact.footer")}
           </p>
         </div>
       </div>

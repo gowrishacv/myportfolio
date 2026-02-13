@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SkillIconsStrip from "@/components/SkillIconsStrip";
+import { useTranslation } from "react-i18next";
 
 const experiences = [
   {
@@ -97,6 +98,8 @@ const getCompanyInitials = (name: string) => {
 };
 
 const Experience = () => {
+  const { t } = useTranslation();
+
   const baseUrl = import.meta.env.BASE_URL || "/";
   const withBase = (path: string) => {
     const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
@@ -118,10 +121,13 @@ const Experience = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Professional <span className="gradient-text">Experience</span>
+            {t("experience.heading.professional")}{" "}
+            <span className="gradient-text">
+              {t("experience.heading.experience")}
+            </span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A journey through enterprise cloud architecture and transformation
+            {t("experience.intro")}
           </p>
         </motion.div>
 
@@ -174,7 +180,7 @@ const Experience = () => {
                         </div>
                         {exp.current && (
                           <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">
-                            Current
+                            {t("common.current")}
                           </span>
                         )}
                       </div>
@@ -195,7 +201,7 @@ const Experience = () => {
                           icons={exp.tools}
                           perlineMobile={7}
                           perlineDesktop={14}
-                          imageAlt={`${exp.company} tools icons`}
+                          imageAlt={`${exp.company} ${t("experience.toolsAltSuffix")}`}
                         />
                       </div>
                     ) : null}

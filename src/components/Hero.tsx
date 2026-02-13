@@ -3,8 +3,11 @@ import { useState } from "react";
 import { MapPin, ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   const baseUrl = import.meta.env.BASE_URL || "/";
   const withBase = (path: string) => {
     const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
@@ -74,7 +77,7 @@ const Hero = () => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
             <span className="text-sm font-medium text-muted-foreground">
-              Actively seeking new opportunities
+              {t("hero.status")}
             </span>
           </motion.div>
 
@@ -95,7 +98,7 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-xl md:text-2xl text-muted-foreground font-medium mb-6 leading-tight"
           >
-            Cloud Solutions Architect · Cloud Security
+            {t("hero.title")}
           </motion.p>
 
           {/* Location */}
@@ -106,7 +109,7 @@ const Hero = () => {
             className="flex items-center justify-center gap-2 text-muted-foreground mb-8"
           >
             <MapPin className="w-4 h-4 text-primary" />
-            <span>Greater Düsseldorf Area, Germany</span>
+            <span>{t("hero.location")}</span>
           </motion.div>
 
           {/* Summary */}
@@ -116,8 +119,7 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed px-4"
           >
-            Designing secure, compliant, enterprise-scale Azure platforms that
-            accelerate business outcomes.
+            {t("hero.summary")}
           </motion.p>
 
           {/* Contact Buttons */}
@@ -128,16 +130,16 @@ const Hero = () => {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             <Button variant="hero" size="lg" asChild>
-              <a href="#projects">View Projects</a>
+              <a href="#projects">{t("hero.cta.viewProjects")}</a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#" aria-label="Download resume (coming soon)">
+              <a href="#" aria-label={t("hero.cta.downloadResumeAria")}>
                 <Download className="w-4 h-4 mr-2" />
-                Download Resume
+                {t("hero.cta.downloadResume")}
               </a>
             </Button>
             <Button variant="ghost" size="lg" asChild>
-              <a href="#contact">Contact</a>
+              <a href="#contact">{t("hero.cta.contact")}</a>
             </Button>
           </motion.div>
         </motion.div>
@@ -154,7 +156,7 @@ const Hero = () => {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="inline-flex items-center gap-2 text-muted-foreground text-sm border border-border rounded-full px-4 py-2 bg-background/70"
           >
-            <span>Scroll to explore</span>
+            <span>{t("hero.scrollHint")}</span>
             <ArrowDown className="w-4 h-4" />
           </motion.div>
         </motion.div>

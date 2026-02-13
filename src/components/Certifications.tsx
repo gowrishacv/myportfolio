@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Award, GraduationCap } from "lucide-react";
 import SkillIconsStrip from "@/components/SkillIconsStrip";
+import { useTranslation } from "react-i18next";
 
 const CERT_TOOL_ICONS = "azure,terraform";
 
@@ -31,6 +32,8 @@ const education = [
 ];
 
 const Certifications = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="education" className="py-20 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -57,7 +60,9 @@ const Certifications = () => {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <GraduationCap className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold">Education</h2>
+                <h2 className="text-2xl font-bold">
+                  {t("education.education")}
+                </h2>
               </div>
               <div className="space-y-4">
                 {education.map((item) => (
@@ -82,7 +87,9 @@ const Certifications = () => {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Award className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold">Certifications</h2>
+                <h2 className="text-2xl font-bold">
+                  {t("education.certifications")}
+                </h2>
               </div>
               <div className="space-y-4">
                 {certifications.map((cert) => (
