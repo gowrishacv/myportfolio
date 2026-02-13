@@ -1,7 +1,37 @@
+---
+title: Azure Landing Zone Architecture
+layout: default
+---
+
 # Azure Landing Zone Architecture
+**Standardized, secure Azure foundation for fast and consistent workload onboarding.**
+Multi-region. Hybrid on-prem. Multi-subscription enterprise scale.
+
+---
+
+## Table of Contents
+- [Azure Landing Zone Architecture](#azure-landing-zone-architecture)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Business Challenge](#business-challenge)
+  - [Goals](#goals)
+  - [Solution Architecture](#solution-architecture)
+  - [Architecture Diagram](#architecture-diagram)
+  - [Subscription Vending Model](#subscription-vending-model)
+  - [Key Architecture Components](#key-architecture-components)
+    - [Governance](#governance)
+    - [Identity and Access](#identity-and-access)
+    - [Networking (Multi-region + Hybrid)](#networking-multi-region--hybrid)
+    - [Security](#security)
+    - [Observability](#observability)
+    - [Automation](#automation)
+  - [Measurable Outcomes](#measurable-outcomes)
+  - [My Role](#my-role)
+  - [Tech Stack](#tech-stack)
+
+---
 
 ## Overview
-
 Designed and implemented a standardized **Azure Landing Zone** aligned with the **Microsoft Cloud Adoption Framework (CAF)** to enable secure, scalable, and consistent cloud adoption.
 
 The objective was to create a secure Azure foundation that allows new workloads to be onboarded quickly while maintaining governance, compliance, and operational visibility.
@@ -9,7 +39,6 @@ The objective was to create a secure Azure foundation that allows new workloads 
 ---
 
 ## Business Challenge
-
 The organization faced:
 
 - Inconsistent subscription structures
@@ -18,109 +47,114 @@ The organization faced:
 - No centralized logging or monitoring
 - Lack of governance guardrails
 
-Each new workload required re-designing identity, networking, and security patterns from scratch.
+Each new workload required re-designing identity, networking, and security patterns from scratch, slowing delivery and increasing risk.
+
+---
+
+## Goals
+- Standardize governance across subscriptions and environments
+- Reduce misconfiguration risk using secure defaults and policy guardrails
+- Enable hybrid connectivity to on-prem and scalable multi-region networking
+- Support private-by-default PaaS access using private endpoints and private DNS
+- Centralize logging, monitoring, and security posture management
+- Enable repeatable onboarding via an approval-gated subscription vending process
 
 ---
 
 ## Solution Architecture
+The landing zone introduced a policy-driven and automated platform foundation:
 
-The solution introduced a policy-driven, automated Azure Landing Zone including:
-
-- Management Group hierarchy
-- Environment-based subscriptions (Prod / Non-Prod / Shared)
-- Hub-Spoke networking topology
-- Centralized identity governance
-- Infrastructure as Code deployments
-- Security guardrails enforced by policy
+- Management Group hierarchy aligned to CAF
+- Environment-based subscriptions (Prod, NonProd, Shared Services)
+- Multi-region connectivity using **vWAN secured hubs**
+- Hybrid connectivity using **ExpressRoute** (VPN as backup)
+- Centralized identity governance via **Entra ID**, RBAC, and PIM
+- Infrastructure as Code modules with CI/CD pipelines
+- Guardrails enforced via Azure Policy and Defender for Cloud
+- Central observability via Log Analytics and Azure Monitor
 
 ---
 
 ## Architecture Diagram
+> Replace the image path with your exported diagram from draw.io.
 
-```mermaid
-flowchart TD
-    A[Entra ID] --> B[Management Groups]
-    B --> C1[Prod Subscription]
-    B --> C2[Non-Prod Subscription]
-    B --> C3[Shared Services]
+![Azure Landing Zone Architecture](images/azure-landing-zone-vwan-multiregion.svg)
 
-    C1 --> D1[Spoke VNet - Prod]
-    C2 --> D2[Spoke VNet - Non-Prod]
-    C3 --> E[Hub VNet]
+---
 
-    E --> F[Azure Firewall]
-    E --> G[Private DNS]
-    E --> H[Log Analytics]
+## Subscription Vending Model
+Workload teams request subscriptions through a controlled process. The platform team reviews and approves requests, then triggers a CI/CD pipeline that provisions the subscription baseline using Infrastructure as Code.
 
-    H --> I[Azure Monitor]
-    H --> J[Defender for Cloud]
+**Workflow**
+1. Workload Team Request
+2. Platform Team Review
+3. Approval Gate (Approved or Changes required)
+4. CI/CD Pipeline Triggered (Azure DevOps or GitHub Actions)
+5. IaC Deployment (Terraform or Bicep)
+6. Subscription Ready (guardrails, connectivity, monitoring enabled)
 
-    D1 --> K[Applications]
-    D2 --> L[Applications]
-```
+**Baseline provisioned**
+- Management Group assignment and subscription structure
+- RBAC baseline with PIM eligible roles
+- Azure Policy initiatives (tagging, diagnostics, security baseline)
+- vWAN connectivity and routing
+- Private DNS linkage to shared services
+- Log Analytics, Monitor, Defender for Cloud enabled
 
 ---
 
 ## Key Architecture Components
 
 ### Governance
+- Management Groups and subscription segmentation
+- Azure Policy initiatives and compliance guardrails
+- RBAC baseline and PIM eligible roles
 
-- Azure Management Groups
-- Subscription segmentation
-- Azure Policy initiatives
-- RBAC and Privileged Identity Management
-
-### Identity & Access
-
+### Identity and Access
 - Entra ID integration
-- Conditional Access
-- Least privilege model
+- Conditional Access and least privilege model
+- Privileged access via PIM
 
-### Networking
-
-- Hub-Spoke topology
-- Azure Firewall
-- Private Endpoints
-- NSG segmentation
-- Private DNS zones
+### Networking (Multi-region + Hybrid)
+- vWAN secured hubs in Region A and Region B
+- ExpressRoute connectivity to on-prem (VPN optional backup)
+- Hub and spoke segmentation for workload isolation
+- Private DNS zones and Private Endpoints for PaaS
 
 ### Security
-
-- Defender for Cloud baseline
+- Defender for Cloud baseline and posture management
 - Secure defaults enforced via policy
-- Key Vault integration
-- Zero Trust network segmentation
+- Key Vault for secrets and platform credentials
+- Zero Trust segmentation principles
 
 ### Observability
-
 - Central Log Analytics workspace
-- Azure Monitor
+- Azure Monitor metrics, logs, and alerting
 - Diagnostic settings enforced via policy
-- Centralized alerting model
 
 ### Automation
-
-- Terraform / Bicep modules
-- Azure DevOps / GitHub Actions CI/CD
-- Reusable deployment pipelines
+- Terraform and Bicep modules
+- Azure DevOps or GitHub Actions CI/CD
+- Reusable pipelines and standardized templates
 
 ---
 
 ## Measurable Outcomes
-
 - Reduced workload onboarding time by **~40%**
-- Enforced consistent governance across subscriptions
-- Improved audit readiness and compliance visibility
-- Reduced misconfiguration risks through automated guardrails
-- Enabled scalable, repeatable cloud deployments
+- Reduced misconfiguration risk via policy and RBAC guardrails
+- Improved audit readiness with centralized logging and reporting
+- Enabled repeatable, scalable deployments with IaC and CI/CD
 
 ---
 
 ## My Role
-
-- Designed end-to-end landing zone architecture
-- Defined management group hierarchy
-- Implemented governance and RBAC model
-- Built Infrastructure as Code modules
-- Established CI/CD automation pipelines
+- Owned end-to-end landing zone architecture and standards
+- Designed governance model (MG hierarchy, RBAC and PIM, policy initiatives)
+- Defined multi-region hybrid connectivity using vWAN secured hubs
+- Built IaC modules and CI/CD workflows for automated onboarding
 - Conducted architecture reviews and security validations
+
+---
+
+## Tech Stack
+Azure, Management Groups, Subscriptions, Entra ID, RBAC, PIM, Azure Policy, Key Vault, Log Analytics, Azure Monitor, Defender for Cloud, vWAN, ExpressRoute, VNets, Hub-Spoke, NSG, Private DNS, Private Endpoints, Azure Firewall, Terraform, Bicep, Azure DevOps, GitHub Actions
