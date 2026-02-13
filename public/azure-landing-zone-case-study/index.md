@@ -7,10 +7,6 @@ layout: default
 **Standardized, secure Azure foundation for fast and consistent workload onboarding.**
 Multi-region. Hybrid on-prem. Multi-subscription enterprise scale.
 
-Updated todo list
- Protect main branch in GitHub
----
-
 ## Table of Contents
 - [Azure Landing Zone Architecture](#azure-landing-zone-architecture)
   - [Protect main branch in GitHub](#protect-main-branch-in-github)
