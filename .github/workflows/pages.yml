@@ -32,6 +32,12 @@ jobs:
             - name: Install dependencies
               run: bun install --frozen-lockfile || bun install
 
+            - name: Lint
+              run: bun run lint
+
+            - name: Test
+              run: bun run test
+
             - name: Build
               # GitHub "Project Pages" base: https://<user>.github.io/<repo>/
               # If you later switch to a custom domain, change this to: bun run build -- --base=/
