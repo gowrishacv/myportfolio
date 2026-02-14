@@ -1,144 +1,143 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, MapPin, ArrowUpRight, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import SkillIconsStrip from "@/components/SkillIconsStrip";
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const CONTACT_TOOL_ICONS = "azure,terraform,kubernetes,docker,git,vscode";
+import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="contact" className="py-20 md:py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="contact" className="py-20 md:py-24">
+      <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
+          className="mx-auto max-w-4xl text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] mb-6 text-foreground">
-            {t("contact.heading.letsBuild")}{" "}
-            <span className="gradient-text">
-              {t("contact.heading.nextPlatform")}
-            </span>
-          </h2>
-
-          <div className="mb-10">
-            <SkillIconsStrip
-              icons={CONTACT_TOOL_ICONS}
-              perlineMobile={6}
-              perlineDesktop={12}
-              imageAlt={t("projects.toolIconsAlt")}
-              className="opacity-95"
-            />
-          </div>
-
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-            {t("contact.intro")}
+          <p className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
+            ping --connect
           </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-foreground md:text-5xl">
+            Let&apos;s <span className="gradient-text">Connect</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">{t("contact.intro")}</p>
+        </motion.div>
 
-          {/* Contact Cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            <motion.a
+        <div className="mx-auto mt-10 grid max-w-6xl gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="grid gap-4 sm:grid-cols-2"
+          >
+            <a
               href="mailto:gowrish@outlook.com"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
+              className="group rounded-2xl border border-border/70 bg-card/85 p-5 transition hover:border-primary/45"
             >
-              <Mail className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">
+              <Mail className="h-5 w-5 text-primary" />
+              <p className="mt-3 text-xs uppercase tracking-[0.12em] text-muted-foreground">
                 {t("contact.cards.email")}
               </p>
-              <p className="font-medium text-sm group-hover:text-primary transition-colors">
-                gowrish@outlook.com
+              <p className="mt-1 text-sm font-medium text-foreground">gowrish@outlook.com</p>
+              <p className="mt-3 inline-flex items-center text-xs text-primary">
+                send message <ArrowUpRight className="ml-1 h-3 w-3" />
               </p>
-            </motion.a>
+            </a>
 
-            <motion.a
+            <a
               href="https://www.linkedin.com/in/gowrishacv"
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
+              className="group rounded-2xl border border-border/70 bg-card/85 p-5 transition hover:border-primary/45"
             >
-              <Linkedin className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">
+              <Linkedin className="h-5 w-5 text-primary" />
+              <p className="mt-3 text-xs uppercase tracking-[0.12em] text-muted-foreground">
                 {t("contact.cards.linkedin")}
               </p>
-              <p className="font-medium text-sm group-hover:text-primary transition-colors flex items-center justify-center gap-1">
-                /in/gowrishacv
-                <ArrowUpRight className="w-3 h-3" />
+              <p className="mt-1 text-sm font-medium text-foreground">linkedin.com/in/gowrishacv</p>
+              <p className="mt-3 inline-flex items-center text-xs text-primary">
+                view profile <ArrowUpRight className="ml-1 h-3 w-3" />
               </p>
-            </motion.a>
+            </a>
 
-            <motion.a
+            <a
               href="https://github.com/gowrishacv"
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="group p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:glow-accent transition-all duration-300 break-words"
+              className="group rounded-2xl border border-border/70 bg-card/85 p-5 transition hover:border-primary/45"
             >
-              <Github className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">
+              <Github className="h-5 w-5 text-primary" />
+              <p className="mt-3 text-xs uppercase tracking-[0.12em] text-muted-foreground">
                 {t("contact.cards.github")}
               </p>
-              <p className="font-medium text-sm group-hover:text-primary transition-colors flex items-center justify-center gap-1">
-                github.com/gowrishacv
-                <ArrowUpRight className="w-3 h-3" />
+              <p className="mt-1 text-sm font-medium text-foreground">github.com/gowrishacv</p>
+              <p className="mt-3 inline-flex items-center text-xs text-primary">
+                explore repos <ArrowUpRight className="ml-1 h-3 w-3" />
               </p>
-            </motion.a>
+            </a>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm"
-            >
-              <MapPin className="w-6 h-6 text-primary mb-3 mx-auto" />
-              <p className="text-sm text-muted-foreground mb-1">
+            <div className="rounded-2xl border border-border/70 bg-card/85 p-5">
+              <MapPin className="h-5 w-5 text-primary" />
+              <p className="mt-3 text-xs uppercase tracking-[0.12em] text-muted-foreground">
                 {t("contact.cards.location")}
               </p>
-              <p className="font-medium text-sm">
-                {t("contact.locationValue")}
-              </p>
-            </motion.div>
-          </div>
-
-          {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Button variant="hero" size="lg" asChild>
-              <a href="mailto:gowrish@outlook.com">
-                <Mail className="w-4 h-4 mr-2" /> {t("contact.cta")}
-                <ArrowUpRight className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
+              <p className="mt-1 text-sm font-medium text-foreground">{t("contact.locationValue")}</p>
+              <p className="mt-3 text-xs text-muted-foreground">Open to remote and hybrid opportunities</p>
+            </div>
           </motion.div>
-        </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05, duration: 0.5 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-border/70 bg-card/90 p-6 md:p-8"
+          >
+            <p className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
+              ready-to-collaborate
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold text-foreground md:text-3xl">
+              Ready to Start Your Project?
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              I can help with cloud architecture, migration strategy, landing zone implementation,
+              governance controls, and platform automation.
+            </p>
+
+            <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
+                Architecture discovery and roadmap planning
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
+                Enterprise landing zones and governance rollout
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
+                IaC and CI/CD implementation for repeatable delivery
+              </li>
+            </ul>
+
+            <div className="mt-6">
+              <Button variant="hero" size="lg" asChild>
+                <a href="mailto:gowrish@outlook.com">
+                  <Mail className="h-4 w-4" /> {t("contact.cta")}
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Footer */}
-      <div className="mt-16 pt-8 border-t border-border">
+      <div className="mt-16 border-t border-border pt-8">
         <div className="container mx-auto px-6">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Gowrisha C. Vishwa Kumar.{" "}
-            {t("contact.footer")}
+            © {new Date().getFullYear()} Gowrisha C. Vishwa Kumar. {t("contact.footer")}
           </p>
         </div>
       </div>

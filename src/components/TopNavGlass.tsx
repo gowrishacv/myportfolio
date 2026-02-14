@@ -47,6 +47,8 @@ const TopNavGlass = () => {
     () => [
       { id: "home", label: t("nav.home") },
       { id: "about", label: t("nav.about") },
+      { id: "impact", label: t("nav.impact") },
+      { id: "skills", label: t("nav.skills") },
       { id: "projects", label: t("nav.projects") },
       { id: "contact", label: t("nav.contact") },
     ],

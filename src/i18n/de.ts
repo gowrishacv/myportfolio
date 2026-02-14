@@ -4,6 +4,8 @@ const de = {
     logoAria: "Nach oben",
     home: "Home",
     about: "Über mich",
+    impact: "Impact",
+    skills: "Skills",
     projects: "Projekte",
     contact: "Kontakt",
   },

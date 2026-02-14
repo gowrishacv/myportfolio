@@ -4,6 +4,8 @@ const en = {
     logoAria: "Go to top",
     home: "Home",
     about: "About",
+    impact: "Impact",
+    skills: "Skills",
     projects: "Projects",
     contact: "Contact",
   },

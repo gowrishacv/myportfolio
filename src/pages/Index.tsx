@@ -14,11 +14,11 @@ const Index = () => {
         <TopNavGlass />
       </div>
       <Hero />
-      <Projects />
+      <About />
       <Experience />
       <Skills />
+      <Projects />
       <Certifications />
-      <About />
       <Contact />
     </main>
   );

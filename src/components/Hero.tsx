@@ -1,8 +1,29 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { MapPin, ArrowDown } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  ArrowDown,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  TerminalSquare,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+
+const heroStats = [
+  { value: "10+", label: "Years in Cloud" },
+  { value: "50+", label: "Workloads Migrated" },
+  { value: "99.9%", label: "Availability Focus" },
+];
+
+const quickPills = [
+  "Azure Landing Zones",
+  "Cloud Security",
+  "Terraform Automation",
+];
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -19,127 +40,137 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+      className="relative min-h-screen overflow-hidden pt-28 pb-16 md:pt-32"
     >
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-
-      {/* Animated Background Blobs */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <motion.div
-          animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[100px]"
-        />
-        <motion.div
-          animate={{ x: [0, -100, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[100px]"
-        />
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[-6rem] top-20 h-48 w-48 rounded-full bg-sky-200/50 blur-3xl" />
+        <div className="absolute right-[-7rem] top-48 h-60 w-60 rounded-full bg-emerald-200/45 blur-3xl" />
+        <div className="absolute bottom-16 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-100/40 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          {/* Profile photo */}
+      <div className="container mx-auto px-6">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.15, duration: 0.5 }}
-            className="flex justify-center mb-6"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+            className="max-w-2xl"
           >
-            <Avatar className="h-28 w-28 md:h-36 md:w-36 ring-4 ring-primary/25 ring-offset-4 ring-offset-background shadow-xl">
-              <AvatarImage
-                src={profileSrc}
-                alt="Gowrisha C. Vishwa Kumar"
-                className="object-cover"
-                onError={() =>
-                  setProfileSrc(withBase("profile-placeholder.svg"))
-                }
-              />
-              <AvatarFallback className="text-lg md:text-xl font-semibold">
-                GCVK
-              </AvatarFallback>
-            </Avatar>
+            <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-4 py-2 text-xs tracking-[0.14em] text-muted-foreground backdrop-blur">
+              <TerminalSquare className="h-4 w-4 text-primary" />
+              <span className="font-mono">printf \"cloud architect profile\"</span>
+            </div>
+
+            <h1 className="mt-6 font-mono text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl">
+              <span className="block">gowrisha@devops:~$</span>
+              <span className="gradient-text">whoami</span>
+            </h1>
+
+            <p className="mt-5 text-xl font-medium text-foreground/90 md:text-2xl">
+              {t("hero.title")}
+            </p>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              {t("hero.summary")}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {quickPills.map((pill) => (
+                <span
+                  key={pill}
+                  className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground"
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button variant="hero" size="lg" asChild>
+                <a href="#projects">View Projects</a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="mailto:gowrish@outlook.com">
+                  <Mail className="h-4 w-4" /> Email Me
+                </a>
+              </Button>
+              <a
+                href="https://www.linkedin.com/in/gowrishacv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center justify-center rounded-md border border-border bg-card/70 px-4 text-sm font-medium text-foreground transition hover:border-primary/45"
+              >
+                <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+              </a>
+              <a
+                href="https://github.com/gowrishacv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center justify-center rounded-md border border-border bg-card/70 px-4 text-sm font-medium text-foreground transition hover:border-primary/45"
+              >
+                <Github className="mr-2 h-4 w-4" /> GitHub
+              </a>
+            </div>
+
+            <div className="mt-7 inline-flex items-center gap-2 rounded-lg border border-border/70 bg-card/60 px-3 py-2 text-sm text-muted-foreground">
+              <MapPin className="h-4 w-4 text-primary" />
+              <span>{t("hero.location")}</span>
+            </div>
           </motion.div>
 
-          {/* Status Badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.65, ease: "easeOut" }}
+            className="mx-auto w-full max-w-md"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span className="text-sm font-medium text-muted-foreground">
-              {t("hero.status")}
-            </span>
+            <div className="rounded-3xl border border-border/70 bg-card/80 p-6 shadow-[0_18px_50px_-35px_rgba(20,43,90,0.7)] backdrop-blur">
+              <div className="mb-5 flex justify-center">
+                <Avatar className="h-36 w-36 border-4 border-primary/25 ring-8 ring-primary/10 md:h-40 md:w-40">
+                  <AvatarImage
+                    src={profileSrc}
+                    alt="Gowrisha C. Vishwa Kumar"
+                    className="object-cover"
+                    onError={() => setProfileSrc(withBase("profile-placeholder.svg"))}
+                  />
+                  <AvatarFallback className="text-lg font-semibold">
+                    GCVK
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+
+              <p className="text-center text-sm text-muted-foreground">
+                {t("hero.status")}
+              </p>
+
+              <div className="mt-5 grid gap-2 sm:grid-cols-3">
+                {heroStats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-xl border border-border/70 bg-background/70 px-3 py-3 text-center"
+                  >
+                    <p className="font-mono text-lg font-bold text-foreground">
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
+        </div>
 
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-semibold tracking-[-0.03em] mb-4 whitespace-nowrap"
-          >
-            Gowrisha C. <span className="gradient-text">Vishwa Kumar</span>
-          </motion.h1>
-
-          {/* Title */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-xl md:text-2xl text-muted-foreground font-medium mb-6 leading-tight"
-          >
-            {t("hero.title")}
-          </motion.p>
-
-          {/* Location */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex items-center justify-center gap-2 text-muted-foreground mb-8"
-          >
-            <MapPin className="w-4 h-4 text-primary" />
-            <span>{t("hero.location")}</span>
-          </motion.div>
-
-          {/* Summary */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed px-4"
-          >
-            {t("hero.summary")}
-          </motion.p>
-        </motion.div>
-
-        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="hidden lg:flex justify-center mt-12"
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-10 hidden justify-center lg:flex"
         >
-          <motion.div
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="inline-flex items-center gap-2 text-muted-foreground text-sm border border-border rounded-full px-4 py-2 bg-background/70"
+          <a
+            href="#about"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm text-muted-foreground"
           >
-            <span>{t("hero.scrollHint")}</span>
-            <ArrowDown className="w-4 h-4" />
-          </motion.div>
+            {t("hero.scrollHint")} <ArrowDown className="h-4 w-4" />
+          </a>
         </motion.div>
       </div>
     </section>
