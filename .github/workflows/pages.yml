@@ -39,9 +39,8 @@ jobs:
               run: bun run test
 
             - name: Build
-              # GitHub "Project Pages" base: https://<user>.github.io/<repo>/
-              # If you later switch to a custom domain, change this to: bun run build -- --base=/
-              run: bun run build -- --base=/${{ github.event.repository.name }}/
+              # Custom domain / user pages base
+              run: bun run build
 
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3

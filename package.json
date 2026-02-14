@@ -6,13 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:pages": "vite build --base=/myportfolio/",
-    "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "postinstall": "node ./scripts/setup-git-hooks.mjs",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "build:gh": "vite build --base=/myportfolio/"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

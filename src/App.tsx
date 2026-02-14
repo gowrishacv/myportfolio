@@ -20,7 +20,7 @@ const App = () => (
         <LanguageSwitcher />
       </div>
 
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route
