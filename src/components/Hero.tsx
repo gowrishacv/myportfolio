@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowDown,
   Github,
@@ -11,6 +11,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import BrandSignature from "@/components/BrandSignature";
 import { Button } from "@/components/ui/button";
 
 const heroStats = [
@@ -27,13 +28,15 @@ const quickPills = [
 
 const Hero = () => {
   const { t } = useTranslation();
-  const translatedRoles = t("hero.animatedRoles", {
-    returnObjects: true,
-  });
-  const animatedRoles =
-    Array.isArray(translatedRoles) && translatedRoles.length > 0
-      ? translatedRoles
+  const animatedRoles = useMemo(() => {
+    const roles = t("hero.animatedRoles", {
+      returnObjects: true,
+    });
+
+    return Array.isArray(roles) && roles.length > 0
+      ? roles
       : [t("hero.title")];
+  }, [t]);
 
   const baseUrl = import.meta.env.BASE_URL || "/";
   const withBase = (path: string) => {
@@ -89,7 +92,7 @@ const Hero = () => {
         <div className="absolute bottom-16 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-100/40 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -97,13 +100,15 @@ const Hero = () => {
             transition={{ duration: 0.65, ease: "easeOut" }}
             className="max-w-2xl"
           >
+            <BrandSignature className="mb-6 xl:hidden" compact />
+
             <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-4 py-2 text-xs tracking-[0.14em] text-muted-foreground backdrop-blur">
               <TerminalSquare className="h-4 w-4 text-primary" />
               <span className="font-mono">printf \"cloud architect profile\"</span>
             </div>
 
-            <h1 className="mt-6 font-mono text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl">
-              <span className="block">gowrisha@devops:~$</span>
+            <h1 className="mt-6 font-mono text-[2.4rem] font-semibold leading-[1.03] tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl">
+              <span className="block break-all sm:break-normal">gowrisha@devops:~$</span>
               <span className="gradient-text">whoami</span>
             </h1>
 
