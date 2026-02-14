@@ -21,6 +21,10 @@ const en = {
   hero: {
     status: "Actively seeking new opportunities",
     title: "Cloud Solutions Architect · Cloud Security",
+    animatedRoles: [
+      "Cloud Solutions Architect",
+      "DevOps, SRE Engineer",
+    ],
     location: "Greater Düsseldorf Area, Germany",
     summary:
       "Designing secure, compliant, enterprise-scale Azure platforms that accelerate business outcomes.",

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowDown,
   Github,
@@ -27,6 +27,13 @@ const quickPills = [
 
 const Hero = () => {
   const { t } = useTranslation();
+  const translatedRoles = t("hero.animatedRoles", {
+    returnObjects: true,
+  });
+  const animatedRoles =
+    Array.isArray(translatedRoles) && translatedRoles.length > 0
+      ? translatedRoles
+      : [t("hero.title")];
 
   const baseUrl = import.meta.env.BASE_URL || "/";
   const withBase = (path: string) => {
@@ -36,6 +43,40 @@ const Hero = () => {
   };
 
   const [profileSrc, setProfileSrc] = useState(withBase("profile.png"));
+  const [typedRoleText, setTypedRoleText] = useState("");
+  const [activeRoleIndex, setActiveRoleIndex] = useState(0);
+  const [isDeletingRoleText, setIsDeletingRoleText] = useState(false);
+
+  useEffect(() => {
+    const currentRole = animatedRoles[activeRoleIndex] ?? "";
+    const typingDelay = isDeletingRoleText ? 40 : 75;
+    const holdDelay = 1300;
+    const switchDelay = 240;
+
+    const timer = window.setTimeout(() => {
+      if (!isDeletingRoleText && typedRoleText === currentRole) {
+        setIsDeletingRoleText(true);
+        return;
+      }
+
+      if (isDeletingRoleText && typedRoleText.length === 0) {
+        setIsDeletingRoleText(false);
+        setActiveRoleIndex((prev) => (prev + 1) % animatedRoles.length);
+        return;
+      }
+
+      const nextText = isDeletingRoleText
+        ? currentRole.slice(0, typedRoleText.length - 1)
+        : currentRole.slice(0, typedRoleText.length + 1);
+      setTypedRoleText(nextText);
+    }, !isDeletingRoleText && typedRoleText === currentRole
+      ? holdDelay
+      : isDeletingRoleText && typedRoleText.length === 0
+        ? switchDelay
+        : typingDelay);
+
+    return () => window.clearTimeout(timer);
+  }, [activeRoleIndex, animatedRoles, isDeletingRoleText, typedRoleText]);
 
   return (
     <section
@@ -66,9 +107,14 @@ const Hero = () => {
               <span className="gradient-text">whoami</span>
             </h1>
 
-            <p className="mt-5 text-xl font-medium text-foreground/90 md:text-2xl">
-              {t("hero.title")}
-            </p>
+            <div className="mt-5 flex min-h-[2.75rem] items-center md:min-h-[3rem]">
+              <p className="font-mono text-lg font-medium text-foreground/90 md:text-2xl">
+                <span className="text-primary">&gt;</span> {typedRoleText}
+                <span className="ml-1 inline-block animate-pulse text-primary">
+                  |
+                </span>
+              </p>
+            </div>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               {t("hero.summary")}
             </p>
@@ -138,9 +184,15 @@ const Hero = () => {
                 </Avatar>
               </div>
 
-              <p className="text-center text-sm text-muted-foreground">
-                {t("hero.status")}
-              </p>
+              <div className="flex justify-center">
+                <p className="inline-flex items-center gap-2 rounded-full border border-emerald-200/70 bg-emerald-50/80 px-3 py-1 text-sm font-medium text-emerald-700">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500/75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                  </span>
+                  {t("hero.status")}
+                </p>
+              </div>
 
               <div className="mt-5 grid gap-2 sm:grid-cols-3">
                 {heroStats.map((stat) => (
