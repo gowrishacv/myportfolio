@@ -23,48 +23,6 @@ type HighlightRect = {
   height: number;
 };
 
-const BrandCloudArchitectIcon = () => (
-  <svg
-    viewBox="0 0 48 48"
-    aria-hidden="true"
-    className="h-9 w-9 shrink-0"
-    role="presentation"
-  >
-    <defs>
-      <linearGradient id="iw-brand-gradient" x1="6" y1="6" x2="42" y2="42">
-        <stop offset="0%" stopColor="#0F172A" />
-        <stop offset="100%" stopColor="#1E293B" />
-      </linearGradient>
-    </defs>
-
-    <rect
-      x="2"
-      y="2"
-      width="44"
-      height="44"
-      rx="14"
-      fill="url(#iw-brand-gradient)"
-    />
-
-    <path
-      d="M16.5 27.8h14.8c3 0 5.4-2.3 5.4-5.2 0-2.8-2.2-5.1-5-5.2-.8-3.4-3.9-5.9-7.6-5.9-4.2 0-7.6 3.3-7.8 7.4a5.2 5.2 0 0 0 .2 10.4Z"
-      fill="#F8FAFC"
-    />
-
-    <path
-      d="M12 13.5 16 17.2M36 12.8l-4.5 4M10.8 33.8 16.8 29"
-      stroke="#38BDF8"
-      strokeLinecap="round"
-      strokeWidth="1.6"
-      opacity="0.9"
-    />
-
-    <circle cx="12" cy="13.5" r="2.3" fill="#38BDF8" />
-    <circle cx="36" cy="12.8" r="2.3" fill="#22D3EE" />
-    <circle cx="10.8" cy="33.8" r="2.3" fill="#60A5FA" />
-  </svg>
-);
-
 const scrollToSection = (id: string) => {
   if (id === "home") {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -188,34 +146,7 @@ const TopNavGlass = () => {
           "px-2 py-2",
         )}
       >
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              setActiveId("home");
-              scrollToSection("home");
-            }}
-            aria-label={t("nav.logoAria")}
-            className={cn(
-              "group",
-              "inline-flex h-10 items-center gap-2 rounded-xl px-2 sm:h-11 sm:gap-3 sm:px-3",
-              "text-foreground/90 hover:text-foreground",
-              "transition-colors",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-            )}
-          >
-            <BrandCloudArchitectIcon />
-
-            <span className="hidden flex-col items-start leading-none sm:flex">
-              <span className="text-[0.93rem] font-semibold tracking-[-0.01em] text-foreground">
-                InfraWisdom
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary/90">
-                Cloud Architect
-              </span>
-            </span>
-          </button>
-
+        <div className="flex items-center">
           <div
             ref={listRef}
             className="relative flex items-center gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
