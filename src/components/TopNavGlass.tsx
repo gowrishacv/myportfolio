@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Cloud } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -35,13 +36,6 @@ const scrollToSection = (id: string) => {
 
 const TopNavGlass = () => {
   const { t } = useTranslation();
-
-  const baseUrl = import.meta.env.BASE_URL || "/";
-  const withBase = (path: string) => {
-    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-    const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
-    return `${normalizedBase}${normalizedPath}`;
-  };
 
   const items = useMemo<NavItem[]>(
     () => [
@@ -163,25 +157,22 @@ const TopNavGlass = () => {
             aria-label={t("nav.logoAria")}
             className={cn(
               "group",
-              "grid place-items-center",
-              "h-10 w-10 rounded-xl",
+              "inline-flex h-10 items-center gap-2 rounded-xl px-2 sm:px-3",
               "text-foreground/90 hover:text-foreground",
               "transition-colors",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
             )}
           >
-            <img
-              src={withBase("cloud_logo.png")}
-              alt=""
+            <span
               aria-hidden="true"
-              className={cn(
-                "h-5 w-5 object-contain",
-                "opacity-90 group-hover:opacity-100",
-                "transition-opacity",
-                "dark:invert",
-              )}
-              draggable={false}
-            />
+              className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-foreground text-background"
+            >
+              <Cloud className="h-4 w-4 fill-current" />
+            </span>
+            <span className="hidden items-center gap-1 sm:inline-flex font-mono text-sm font-semibold leading-none">
+              <span className="text-primary">&gt;_</span>
+              <span className="text-foreground">IW</span>
+            </span>
           </button>
 
           <div
