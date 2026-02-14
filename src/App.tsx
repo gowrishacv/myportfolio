@@ -16,7 +16,7 @@ const App = () => (
       <Toaster />
       <Sonner />
 
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed right-4 z-50 bottom-[calc(env(safe-area-inset-bottom)+1rem)] sm:bottom-auto sm:top-[calc(env(safe-area-inset-top)+1rem)]">
         <LanguageSwitcher />
       </div>
 

@@ -10,7 +10,7 @@ import TopNavGlass from "@/components/TopNavGlass";
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
-      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-40 px-4">
+      <div className="fixed inset-x-0 top-[calc(env(safe-area-inset-top)+1rem)] z-40 px-4 flex justify-center">
         <TopNavGlass />
       </div>
       <Hero />
