@@ -161,7 +161,7 @@ const TopNavGlass = () => {
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
             )}
           >
-            <Cloud className="h-4 w-4 fill-current text-foreground" />
+            <Cloud className="h-4 w-4 text-foreground" strokeWidth={2.4} />
           </button>
 
           <span aria-hidden="true" className="h-5 w-px bg-border/60" />
