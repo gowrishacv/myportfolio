@@ -1,225 +1,109 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin } from "lucide-react";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import SkillIconsStrip from "@/components/SkillIconsStrip";
-import { useTranslation } from "react-i18next";
+  AlarmClockCheck,
+  BadgeCheck,
+  CloudCog,
+  Gauge,
+  Server,
+  Shield,
+  Workflow,
+} from "lucide-react";
 
-const experiences = [
+const impactMetrics = [
   {
-    company: "Santander Deutschland",
-    logo: "santander.png",
-    role: "Cloud Architect",
-    period: "September 2023 - Present",
-    duration: "2 years 5 months",
-    location: "North Rhine-Westphalia, Germany",
-    tools:
-      "azure,terraform,kubernetes,docker,git,githubactions,powershell,bash,vscode",
-    highlights: [
-      "Leading Azure architecture across cloud modernization and landing zone implementation",
-      "Delivered secure, scalable Azure landing zones aligned to enterprise compliance",
-      "Migration planning and target architecture design for regulated environments",
-    ],
-    current: true,
+    value: "26+",
+    label: "Azure Platforms",
+    detail: "Enterprise cloud foundations designed and delivered.",
+    icon: CloudCog,
+    tone: "text-sky-600",
   },
   {
-    company: "Sopra Steria",
-    logo: "sopra-steria.png",
-    role: "Azure Cloud Architect",
-    period: "August 2022 - May 2023",
-    duration: "10 months",
-    location: "Bengaluru, Karnataka, India",
-    tools: "azure,terraform,powershell,bash,git,githubactions",
-    highlights: [
-      "Cut infrastructure cost ~20% through right-sizing and IaC automation",
-      "Led cloud security audits and enforced identity governance with Entra ID",
-      "Migrated 50+ servers to Azure with zero downtime using Azure Migrate",
-      "Built TCO analysis and ROI models for C-level decision-making",
-    ],
-    current: false,
+    value: "10K",
+    label: "IaC Resources",
+    detail: "Provisioned and governed through Terraform modules.",
+    icon: Workflow,
+    tone: "text-indigo-600",
   },
   {
-    company: "Tech Mahindra",
-    logo: "tech-mahindra.png",
-    role: "Associate Technical Lead",
-    period: "October 2021 - July 2022",
-    duration: "10 months",
-    location: "Bengaluru, Karnataka, India",
-    tools: "azure,nginx,windows,redhat,git",
-    highlights: [
-      "Designed and implemented high availability and security solutions",
-      "Identified critical IT assets and potential threats",
-      "Executed and tested disaster recovery plans",
-    ],
-    current: false,
+    value: "60+",
+    label: "Production Migrations",
+    detail: "Workloads moved with controlled cutovers.",
+    icon: Server,
+    tone: "text-emerald-600",
   },
   {
-    company: "BrainScale Inc",
-    logo: "brainscale.png",
-    role: "Cloud Consultant",
-    period: "October 2017 - October 2021",
-    duration: "4 years 1 month",
-    location: "Bengaluru, Karnataka, India",
-    tools: "azure,powershell,bash,windows,git",
-    highlights: [
-      "Prepared capacity and architecture plans for Azure Cloud environments",
-      "Provided disaster recovery recommendations",
-      "Built solutions for data archiving with IaaS VMs and PaaS role instances",
-    ],
-    current: false,
+    value: "99%",
+    label: "Compliance Alignment",
+    detail: "Security controls aligned to enterprise policy baselines.",
+    icon: Shield,
+    tone: "text-emerald-700",
   },
   {
-    company: "NetApp",
-    logo: "netapp.png",
-    role: "Cloud Engineer",
-    period: "October 2015 - September 2017",
-    duration: "2 years",
-    location: "Bengaluru, Karnataka, India",
-    tools: "azure,nginx,windows,redhat,git",
-    highlights: [
-      "Provided recommendations for disaster recovery to Azure IaaS",
-      "Built solutions using Azure Blob storage for data archiving",
-      "Configured VNet, Application Gateway, Traffic Manager, and Load Balancer",
-    ],
-    current: false,
+    value: "5+",
+    label: "Industries Served",
+    detail: "Finance, manufacturing, telecom, consulting, and public sector.",
+    icon: BadgeCheck,
+    tone: "text-rose-600",
+  },
+  {
+    value: "3x",
+    label: "Delivery Velocity",
+    detail: "Faster environment setup through reusable blueprints.",
+    icon: Gauge,
+    tone: "text-amber-600",
+  },
+  {
+    value: "75%",
+    label: "Manual Effort Reduced",
+    detail: "Operations streamlined by policy-driven automation.",
+    icon: AlarmClockCheck,
+    tone: "text-blue-600",
   },
 ];
 
-const getCompanyInitials = (name: string) => {
-  const parts = name.split(" ").filter(Boolean);
-  if (parts.length === 1) {
-    return parts[0].slice(0, 2).toUpperCase();
-  }
-  return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
-};
-
 const Experience = () => {
-  const { t } = useTranslation();
-
-  const baseUrl = import.meta.env.BASE_URL || "/";
-  const withBase = (path: string) => {
-    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-    const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
-    return `${normalizedBase}${normalizedPath}`;
-  };
-
   return (
-    <section
-      id="experience"
-      className="py-20 md:py-24 relative overflow-hidden"
-    >
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t("experience.heading.professional")}{" "}
-            <span className="gradient-text">
-              {t("experience.heading.experience")}
-            </span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t("experience.intro")}
-          </p>
-        </motion.div>
-
+    <section id="impact" className="py-20 md:py-24">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-4xl text-center"
         >
-          <div className="rounded-2xl border border-border bg-card/50 backdrop-blur-sm">
-            <Accordion
-              type="single"
-              collapsible
-              defaultValue={experiences.find((exp) => exp.current)?.company}
-              className="px-6"
-            >
-              {experiences.map((exp) => (
-                <AccordionItem key={exp.company} value={exp.company}>
-                  <AccordionTrigger className="text-left">
-                    <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-10 h-10 rounded-lg bg-white border border-border flex items-center justify-center shrink-0 overflow-hidden">
-                          {exp.logo ? (
-                            <img
-                              src={withBase(exp.logo)}
-                              alt={`${exp.company} logo`}
-                              className="h-7 w-7 object-contain"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <span className="text-xs font-semibold text-primary">
-                              {getCompanyInitials(exp.company)}
-                            </span>
-                          )}
-                        </div>
-                        <div className="min-w-0">
-                          <p className="font-semibold text-foreground">
-                            {exp.role}
-                          </p>
-                          <p className="text-sm text-muted-foreground break-words">
-                            {exp.company}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1 flex-wrap">
-                          <Calendar className="w-4 h-4" />
-                          <span className="break-words">{exp.period}</span>
-                        </div>
-                        {exp.current && (
-                          <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">
-                            {t("common.current")}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    <div className="flex flex-wrap gap-4 mb-3 text-sm">
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>{exp.location}</span>
-                      </div>
-                      {exp.duration && <span>{exp.duration}</span>}
-                    </div>
-
-                    {exp.tools ? (
-                      <div className="mb-4">
-                        <SkillIconsStrip
-                          icons={exp.tools}
-                          perlineMobile={7}
-                          perlineDesktop={14}
-                          imageAlt={`${exp.company} ${t("experience.toolsAltSuffix")}`}
-                        />
-                      </div>
-                    ) : null}
-
-                    <ul className="space-y-2 text-sm">
-                      {exp.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+          <p className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
+            impact --metrics
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
+            Impact by the <span className="gradient-text">Numbers</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Measurable outcomes from cloud architecture, migration, governance, and platform engineering work.
+          </p>
         </motion.div>
+
+        <div className="mx-auto mt-10 grid max-w-6xl gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {impactMetrics.map((metric, index) => {
+            const Icon = metric.icon;
+
+            return (
+              <motion.article
+                key={metric.label}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.45 }}
+                viewport={{ once: true }}
+                className="rounded-2xl border border-border/70 bg-card/85 p-6 shadow-sm"
+              >
+                <Icon className={`h-5 w-5 ${metric.tone}`} />
+                <p className="mt-3 font-mono text-3xl font-bold text-foreground">{metric.value}</p>
+                <p className="mt-1 text-sm font-semibold text-foreground/90">{metric.label}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{metric.detail}</p>
+              </motion.article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

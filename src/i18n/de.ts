@@ -1,4 +1,14 @@
 const de = {
+  nav: {
+    aria: "Primär",
+    logoAria: "Nach oben",
+    home: "Home",
+    about: "Über mich",
+    impact: "Impact",
+    skills: "Skills",
+    projects: "Projekte",
+    contact: "Kontakt",
+  },
   common: {
     language: "Sprache",
     en: "EN",
@@ -11,6 +21,10 @@ const de = {
   hero: {
     status: "Aktiv auf der Suche nach neuen Möglichkeiten",
     title: "Cloud Solutions Architect · Cloud Security",
+    animatedRoles: [
+      "Cloud Solutions Architect",
+      "DevOps, SRE Engineer",
+    ],
     location: "Region Düsseldorf, Deutschland",
     summary:
       "Ich entwerfe sichere, konforme Azure-Plattformen im Enterprise-Maßstab, die Business Outcomes beschleunigen.",

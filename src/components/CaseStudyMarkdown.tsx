@@ -188,7 +188,9 @@ const CaseStudyMarkdown = ({
   if (error) {
     return (
       <div className="rounded-2xl border border-border bg-card/70 p-6">
-        <h2 className="text-xl font-bold mb-2">Case Study</h2>
+        <h2 className="text-xl font-semibold tracking-[-0.02em] mb-2">
+          Case Study
+        </h2>
         <p className="text-sm text-muted-foreground mb-4">
           We couldn’t load the content.
         </p>
@@ -214,7 +216,7 @@ const CaseStudyMarkdown = ({
           <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
             Case Study
           </p>
-          <h1 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
+          <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-[-0.03em] leading-tight">
             {title || "Azure Landing Zone"}
           </h1>
           {subtitle ? (
@@ -228,7 +230,7 @@ const CaseStudyMarkdown = ({
       <article
         className={
           articleClassName ??
-          "prose prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-h1:text-3xl md:prose-h1:text-4xl prose-h2:text-2xl md:prose-h2:text-3xl prose-h3:text-xl md:prose-h3:text-2xl prose-a:text-primary hover:prose-a:text-primary/80 prose-hr:border-border/60 prose-img:rounded-xl prose-img:border prose-img:border-border/60 prose-blockquote:border-l-primary/40 prose-blockquote:bg-muted/30 prose-blockquote:rounded-lg prose-blockquote:px-4 prose-blockquote:py-1"
+          "prose prose-neutral dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:scroll-mt-24 prose-h1:text-3xl md:prose-h1:text-4xl prose-h2:text-2xl md:prose-h2:text-3xl prose-h3:text-xl md:prose-h3:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:my-3 prose-ul:my-4 prose-ol:my-4 prose-li:my-1 prose-a:text-primary hover:prose-a:text-primary/80 prose-hr:my-8 prose-hr:border-border/40 prose-img:rounded-xl prose-img:border prose-img:border-border/60 prose-blockquote:border-l-primary/40 prose-blockquote:bg-muted/30 prose-blockquote:rounded-lg prose-blockquote:px-4 prose-blockquote:py-1"
         }
       >
         <ReactMarkdown

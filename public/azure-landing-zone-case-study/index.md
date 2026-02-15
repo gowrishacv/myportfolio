@@ -7,10 +7,9 @@ layout: default
 **Standardized, secure Azure foundation for fast and consistent workload onboarding.**
 Multi-region. Hybrid on-prem. Multi-subscription enterprise scale.
 
----
-
 ## Table of Contents
 - [Azure Landing Zone Architecture](#azure-landing-zone-architecture)
+  - [Protect main branch in GitHub](#protect-main-branch-in-github)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Business Challenge](#business-challenge)
@@ -158,3 +157,4 @@ Workload teams request subscriptions through a controlled process. The platform 
 
 ## Tech Stack
 Azure, Management Groups, Subscriptions, Entra ID, RBAC, PIM, Azure Policy, Key Vault, Log Analytics, Azure Monitor, Defender for Cloud, vWAN, ExpressRoute, VNets, Hub-Spoke, NSG, Private DNS, Private Endpoints, Azure Firewall, Terraform, Bicep, Azure DevOps, GitHub Actions
+
