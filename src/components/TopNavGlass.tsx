@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Cloud } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -147,7 +148,24 @@ const TopNavGlass = () => {
           "px-2 py-2",
         )}
       >
-        <div className="flex items-center">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              setActiveId("home");
+              scrollToSection("home");
+            }}
+            aria-label={t("nav.logoAria")}
+            className={cn(
+              "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-foreground/80 transition-colors hover:text-foreground sm:h-9 sm:w-9",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+            )}
+          >
+            <Cloud className="h-4 w-4 fill-current text-foreground" />
+          </button>
+
+          <span aria-hidden="true" className="h-5 w-px bg-border/60" />
+
           <div
             ref={listRef}
             className="relative flex items-center gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
